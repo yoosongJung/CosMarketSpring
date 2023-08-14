@@ -61,14 +61,14 @@ public class MemberServicveImpl implements MemberService{
 
 	@Override
 	public MemberBuyer selectOneBuyerById(String memberId) {
-		// TODO Auto-generated method stub
-		return null;
+		MemberBuyer mOne = mStore.selectOneBuyerById(sqlSession, memberId);
+		return mOne;
 	}
 
 	@Override
 	public MemberSeller selectOneSellerById(String memberId) {
-		// TODO Auto-generated method stub
-		return null;
+		MemberSeller mOne = mStore.selectOneSellerById(sqlSession, memberId);
+		return mOne;
 	}
 
 }

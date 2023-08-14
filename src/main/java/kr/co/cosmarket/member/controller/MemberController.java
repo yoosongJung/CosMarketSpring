@@ -1,5 +1,7 @@
 package kr.co.cosmarket.member.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,13 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import kr.co.cosmarket.member.domain.MemberBuyer;
 import kr.co.cosmarket.member.domain.MemberSeller;
 import kr.co.cosmarket.member.service.MemberService;
 
 @Controller
-@SessionAttributes({"memberId", "memberName"})
+@SessionAttributes({"memberId", "memberName", "memberType"})
 public class MemberController {
 
 	@Autowired
@@ -103,7 +106,7 @@ public class MemberController {
 			@RequestParam("memberPw") String memberPw,
 			@RequestParam("memberType") String memberType,
 			Model model) {
-		if(memberType == "buyer") {
+		if(memberType.equals("buyer")) {
 			try {
 				MemberBuyer memberBuyer = new MemberBuyer();
 				memberBuyer.setMemberId(memberId);
@@ -112,6 +115,7 @@ public class MemberController {
 				if(mOne != null) {
 					model.addAttribute("memberId", mOne.getMemberId());
 					model.addAttribute("memberName", mOne.getMemberName());
+					model.addAttribute("memberType", memberType);
 					return "redirect:/index.jsp";
 				} else {
 					model.addAttribute("msg","로그인 정보 불일치");
@@ -132,6 +136,7 @@ public class MemberController {
 				if(mOne != null) {
 					model.addAttribute("memberId", mOne.getMemberId());
 					model.addAttribute("memberName", mOne.getMemberName());
+					model.addAttribute("memberType", memberType);
 					return "redirect:/index.jsp";
 				} else {
 					model.addAttribute("msg","로그인 정보 불일치");
@@ -146,5 +151,113 @@ public class MemberController {
 		}
 	}
 	
+	@RequestMapping(value="/memberInfo/logout.do", method=RequestMethod.GET)
+	public String memberLogout(
+			SessionStatus session,
+			Model model) {
+		if(session != null) {
+			session.setComplete();
+			if(session.isComplete()) {
+				// 세션 만료 유효성 체크
+			}
+			return "redirect:/index.jsp";
+		} else {
+			model.addAttribute("msg", "로그아웃을 완료하지 못했습니다.");
+			return "commonDisplay/serviceFailed";
+		}
+	}
 	
+	@RequestMapping(value="/member/myInfo.do", method=RequestMethod.GET)
+	public String showDetailMember(
+			@RequestParam("memberId") String memberId,
+			@RequestParam("memberType") String memberType,
+			Model model) {
+		if(memberType.isEmpty()) return "memberInfo/login";
+		if(memberType.equals("buyer")) {
+			try {
+				MemberBuyer mOne = service.selectOneBuyerById(memberId);
+				if(mOne != null) {
+					model.addAttribute("member", mOne);
+					return "member/common/myPage";
+				} else {
+					model.addAttribute("msg", "회원정보를 가져오지 못했습니다.");
+					return "commonDisplay/serviceFailed";
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				model.addAttribute("msg", e.getMessage());
+				return "commonDisplay/serviceFailed";
+			}
+		} else {
+			try {
+				MemberSeller mOne = service.selectOneSellerById(memberId);
+				if(mOne != null) {
+					model.addAttribute("member", mOne);
+					return "member/common/myPage";
+				} else {
+					model.addAttribute("msg", "회원정보를 가져오지 못했습니다.");
+					return "commonDisplay/serviceFailed";
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				model.addAttribute("msg", e.getMessage());
+				return "commonDisplay/serviceFailed";
+			}
+		}
+	}
+	
+	@RequestMapping(value="/member/delete.do", method=RequestMethod.GET)
+	public String removeMemberView() {
+		return "member/common/secession";
+	}
+	
+	@RequestMapping(value="/member/delete.do", method=RequestMethod.POST)
+	public String removeMember(
+			@RequestParam("memberId") String memberId,
+			@RequestParam("memberPw") String memberPw,
+			@RequestParam("memberType") String memberType,
+			Model model) {
+		MemberBuyer mOneBuyer = null;
+		MemberSeller mOneSeller = null;
+		if(memberType.equals("buyer")) {
+			MemberBuyer memberBuyer = new MemberBuyer(memberId, memberPw);
+			mOneBuyer = service.selectCheckLoginBuyer(memberBuyer);
+		} else {
+			MemberSeller memberSeller = new MemberSeller(memberId, memberPw);
+			mOneSeller = service.selectCheckLoginSeller(memberSeller);
+		}
+		try {
+			if(mOneBuyer != null || mOneSeller != null) {
+				int result = service.deleteMember(memberId, memberType);
+				if(result > 0) {
+					// 성공
+					model.addAttribute("msg", "회원탈퇴 성공");
+					model.addAttribute("url", "/memberInfo/logout.do");
+					return "commonDisplay/serviceSuccess";
+				} else {
+					// 실패
+					model.addAttribute("msg", "회원탈퇴 실패(비밀번호 불일치)");
+					model.addAttribute("url", "/member/delete.do");
+					return "commonDisplay/serviceFailed";
+				}
+			} else {
+				// 실패
+				model.addAttribute("msg", "회원탈퇴 실패(비밀번호 불일치)");
+				model.addAttribute("url", "/member/delete.do");
+				return "commonDisplay/serviceFailed";
+			}
+			
+//			int result = service.removeMember(memberId);
+//			if(result > 0) {
+//				return "redirect:/member/logout.do";
+//			} else {
+//				model.addAttribute("msg", "회원정보를 삭제하지 못했습니다.");
+//				return "commonDisplay/serviceFailed";
+//			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("msg", e.getMessage());
+			return "commonDisplay/serviceFailed";
+		}
+	}
 }

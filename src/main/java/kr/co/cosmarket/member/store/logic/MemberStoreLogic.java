@@ -54,14 +54,14 @@ public class MemberStoreLogic implements MemberStore{
 
 	@Override
 	public MemberBuyer selectOneBuyerById(SqlSession session, String memberId) {
-		// TODO Auto-generated method stub
-		return null;
+		MemberBuyer mOne = session.selectOne("MemberMapper.selectOneBuyerById", memberId);
+		return mOne;
 	}
 
 	@Override
 	public MemberSeller selectOneSellerById(SqlSession session, String memberId) {
-		// TODO Auto-generated method stub
-		return null;
+		MemberSeller mOne = session.selectOne("MemberMapper.selectOneSellerById", memberId);
+		return mOne;
 	}
 
 }

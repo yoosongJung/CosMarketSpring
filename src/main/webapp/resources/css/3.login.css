@@ -81,6 +81,7 @@
 .logo a {
     all: unset;
 }
+
 #main_middle{
     display: flex;
     width: 100vw;
@@ -94,7 +95,7 @@
     box-shadow: 15px 10px 5px #ccc;
     position: relative;
 }
-i {
+.ad i {
     width: 10%;
     position: absolute;
     left: 80%;
@@ -102,8 +103,8 @@ i {
     font-size: large;
 }
 
-img {
-    width: 90%;
-    height: 90%;
+.ad img {
+    width: 100%;
+    height: 100%;
     border: 1px solid black;
 }
