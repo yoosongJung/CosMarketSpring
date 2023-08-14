@@ -1,0 +1,96 @@
+h2 b{
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 3rem;
+}
+
+main {
+  overflow:hidden; 
+  height:auto;
+}
+.form {
+  display: flex;
+  justify-content: space-around;
+}
+
+#buyer {
+  width: 40%;
+  background-image: url("../images/register_normal.jpg");
+  background-size: cover;
+  border-radius: 70px;
+}
+  #buyer li, #seller li {
+    margin: 30px 0px;
+    list-style-type: none;
+  }
+
+#seller {
+  width: 40%;
+  background-image: url("../images/register_seller.jpg");
+  background-size: cover;
+  border-radius: 70px;
+}
+
+form label {
+  font-weight: 900;
+  font-size: x-large;
+  font-family: 'Nanum Pen Script', cursive;
+}
+
+#buyer .buyerCheckSameId {
+  padding: 3px;
+  margin-left: 20px;
+  font-family: 'Nanum Pen Script', cursive;
+  font-weight: 300;
+  font-size: large;
+  background-color: rgb(199, 102, 199);
+  color: white;
+}
+
+#seller .checkSellerNo, #seller .sellerCheckSameId {
+  padding: 3px;
+  margin-left: 20px;
+  font-family: 'Nanum Pen Script', cursive;
+  font-weight: 300;
+  font-size: large;
+  background-color: #499ce0;
+  color: white;
+}
+
+input[type=submit] {
+  width: 80%;
+  height: 50px;
+  margin-left: 10%;
+  margin-bottom: 20%;
+  background-color: #fff;
+  font-family: 'Nanum Pen Script', cursive;
+  font-weight: 700;
+  font-size: large;
+}
+.buyerRegister, .sellerRegister {
+  height: 50px;
+  margin-left: 10%;
+  background-color: #fff;
+  font-family: 'Nanum Pen Script', cursive;
+  font-weight: 700;
+  font-size: large;
+} 
+#seller input[type=submit], .sellerRegister {
+  border-color: rgb(194, 90, 194);  
+}
+#buyer input[type=submit], .buyerRegister {
+  border-color: skyblue;
+}
+input[type=submit]:hover, .buyerRegister:hover, .sellerRegister:hover {
+  border-width: thick;
+}
+@media (max-width: 767px) {
+  #buyer, #seller {
+    width: 85%;
+  }
+  .form {
+    flex-wrap: wrap;
+  }
+}
+.valid {
+  color: red;
+}

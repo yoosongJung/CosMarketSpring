@@ -1,0 +1,45 @@
+#main_middle {
+  margin-top: 30px;
+}
+h2 b{
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 3rem;
+}
+#main_middle table {
+  margin: 3rem auto;
+  width: 90%;
+}
+#main_middle th {
+  border: 1px solid #ccc;
+  text-align: center;
+  background-color: #ccc;
+}
+#main_middle tr, #main_middle td {
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+}
+td input[type=number] {
+  width: 50px;
+}
+i:hover {
+  font-size: unset;
+}
+td button {
+  border: none;
+  background-color: transparent;
+}
+.order {
+  position: relative;
+  left: 70%;
+  padding: 5px 10px;
+  margin: 5px 10px;
+  border-radius: 10px;
+}
+.success {
+  background-color: #0e92d4;
+  width: 20%;
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: x-large;
+  color: white;
+}

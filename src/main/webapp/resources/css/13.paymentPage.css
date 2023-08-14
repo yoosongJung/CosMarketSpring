@@ -1,0 +1,96 @@
+h2 b{
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 3rem;
+}
+#main_middle {
+  margin-top: 30px;
+}
+.pay {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+.pay img {
+  width: 100px;
+}
+.pay th {
+  border: 1px solid #ccc;
+  background-color: #dddcdc;
+}
+.pay tr, .pay td {
+  border: 1px solid #ccc;
+}
+.totalPrice {
+  width: 40%;
+  color: red;
+  font-weight: 900;
+  border: 1px solid red;
+  border-radius: 5px;
+  padding: 2px 15px;
+  margin: 3% 10%;
+  display: flex;
+  margin-left: auto;
+  justify-content: space-between;
+}
+.buyerInfo, .payMethod {
+  background-color: rgb(212, 227, 234);
+  line-height: 2;
+}
+.buyerInfo h4, .deliveryInfo h4, .payMethod h4, .forAccount {
+  width: 30%;
+  margin-bottom: 20px;
+  position: relative;
+  top:10px;
+  left: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+.inputBorder {
+  border: 1px solid #ccc;
+  background-color: white;
+  border-radius: 5px;
+  padding: 0 1%;
+  width: 200px;
+  margin: 10px auto;
+}
+.deliveryInfo {
+  line-height: 2;
+}
+.deliveryInfo input[type=radio], .payMethod input[type=radio] {
+  margin: 0 20px;
+}
+.deliveryInfo label {
+  color: rgb(70, 161, 241);
+  font-weight: bold;
+}
+#postCode {
+  margin: 0 20px;
+  padding: 0 5px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  background-color: rgb(70, 161, 241);
+}
+.payMethod {
+  margin-bottom: 30px;
+}
+.order {
+  position: relative;
+  left: 60%;
+  padding: 5px 10px;
+  margin: 50px 10px;
+  border-radius: 10px;
+}
+.success {
+  background-color: #0e92d4;
+  width: 23%;
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: x-large;
+  color: white;
+}
+.cancel {
+  background-color: #ccc;
+  width: 15%;
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: x-large;
+}

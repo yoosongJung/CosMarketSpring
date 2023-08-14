@@ -1,0 +1,14 @@
+.topProduct {
+  margin:50px 0px;
+}
+
+.col-md-4>a:hover {
+  .card {
+    box-shadow: 8px 8px 8px #ccc;
+    border: 2px solid skyblue;
+  }
+}
+
+.pagination li {
+  margin: 0 1%;
+}

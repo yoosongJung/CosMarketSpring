@@ -1,0 +1,116 @@
+h2 b{
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 3rem;
+}
+#main_middle {
+  margin-top: 30px;
+}
+i:hover {
+  font-size: unset;
+}
+.detailTop {
+  display: flex;
+}
+.detailTopImg {
+  width: 40%;
+}
+  .detailTopImg img {
+    width: 100%;
+  }
+.detailTopInfo {
+  margin: auto auto;
+  line-height: 2.5;
+}
+.pay {
+  padding: 0 30px;
+  border-radius: 7px;
+  background-color: rgb(61, 159, 228);
+  color: white;
+  font-weight: bold;
+  margin-top: 3%;
+  position: relative;
+  left: 50%;
+}
+.basket {
+  padding: 0 10px;
+  border-radius: 7px;
+  background-color: rgb(246, 184, 69);
+  font-weight: bold;
+  margin: 0 2%;
+  margin-top: 3%;
+  position: relative;
+  left: 50%;
+}
+input[type=number] {
+  width: 10%;
+  text-align: center;
+  margin-left: 3%;
+}
+.sellerInfo {
+  width: 70%;
+}
+.sellerInfo td, .sellerInfo tr{
+  border: 1px solid #898787;
+  padding: 5px 15px;
+}
+.sellerInfo th {
+  width: 25%;
+  background-color: #ccc;
+  padding: 5px 15px;
+}
+h5 {
+  margin: 5% 0;
+  background-color: rgb(88, 169, 228);
+  color: white;
+  font-size: bold;
+  padding: 1%;
+}
+
+.col-md-3 a {
+  text-decoration: none;
+}
+.totalPrice {
+  font-size: x-large;
+  margin-top: -3%;
+  float: right;
+}
+
+.arrow_box0 {
+  display: none;
+  position: absolute;
+  width: 15%;
+  padding: 8px;
+  left: 50%;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  background: #333;
+  color: #fff;
+  font-size: 14px;
+  z-index: 1;
+}
+
+.arrow_box0:after {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -10px;
+  border: solid transparent;
+  border-color: rgba(51, 51, 51, 0);
+  border-bottom-color: #333;
+  border-width: 10px;
+  pointer-events: none;
+  content: ' ';
+}
+
+.fa-circle-question:hover + p.arrow_box0 {
+  display: block;
+}
+
+.imgNotice {
+  width: 70%;
+  position: relative;
+  left: 15%;
+}

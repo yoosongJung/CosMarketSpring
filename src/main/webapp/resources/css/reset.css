@@ -1,0 +1,6 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* border 추가 계산 하지 않게 */
+    box-sizing: border-box;
+}

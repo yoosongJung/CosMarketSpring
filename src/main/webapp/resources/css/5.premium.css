@@ -1,0 +1,55 @@
+h2 b{
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 3rem;
+}
+#main_middle {
+  margin-top: 30px;
+}
+.card {
+  margin-top: 30px;
+}
+.card-head1 p {
+  height: 100%;
+  font-weight: 700;
+  background-color: skyblue;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: large;
+}
+.card-head2 p {
+  height: 100%;
+  font-weight: 700;
+  background-color: plum;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: large;
+}
+.card-head3 p {
+  height: 100%;
+  font-weight: 500;
+  color: white;
+  background-color: purple;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: large;
+}
+.btn {
+  float: right;
+  color: rgb(56, 231, 173);
+}
+.super {
+  box-shadow: 10px -10px 5px rgb(131, 57, 131), 20px -20px 5px rgb(161, 93, 161), 30px -30px 5px violet;
+}
+small {
+  display: flex;
+  justify-content: space-around;
+}

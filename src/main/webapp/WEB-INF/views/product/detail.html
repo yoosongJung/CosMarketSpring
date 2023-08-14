@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/dbb376a4c5.js" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <link rel="stylesheet" href="../resources/css/reset.css">
+        <link rel="stylesheet" href="../resources/css/1.main.css">
+        <link rel="stylesheet" href="../resources/css/10.productDetail.css">
+        <title>ProductDetail</title>
+    </head>
+    <body>
+        <header class="sticky-top navbar navbar-expand-lg" style="padding-top: 0px;">
+            
+            <div class="logo">
+                <a class="navbar-brand" href="../index.jsp"><img src="../resources/images/main/logo.PNG" alt=""></a>
+            </div>
+            <div id="nav" class="container-fluid">
+                <div id="nav2">
+                    <input type="text" placeholder="Search">
+                    <button id="navSearch"><i class="fa-solid fa-magnifying-glass" style="color: #f7f7f7;"></i></button>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item" style="margin-top: 13px;"><a href="/memberInfo/register.do">회원가입</a></li>
+                        <li class="nav-item" style="margin-top: 13px;"><a href="/memberInfo/login.do">로그인</a></li>
+                        <li class="nav-item" style="margin-top: 13px;"><a href="/member/myInfo.do?memberId=${memberId}&memberType=${memberType}">마이페이지</a></li>
+                        <li class="nav-item" style="margin-top: 13px;"><a href="../member/common/premium.html">프리미엄</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                게시판
+                            </a>
+                            <ul class="dropdown-menu" style="background-color: skyblue;">
+                                <li><a class="dropdown-item" href="/notice/list.do?currentPage=1">공지사항</a></li>
+                                <li><a class="dropdown-item" href="../member/common/QndA.html">Q&A</a></li>
+                                <li><a class="dropdown-item" href="../member/common/freeBoard.html">자유게시판</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        
+        </header>
+        <main>
+            <div id="main_left">
+
+            </div>
+            <div id="main_middle">
+                <h2><b>상품 상세 페이지</b></h2>
+                <hr>
+                <div class="detailTop">
+                    <div class="detailTopImg">
+                        <img src="../resources/images/topProduct/topProduct2.jpg" alt="상품 이미지">
+                    </div>
+                    <div class="detailTopInfo">
+                        <h3>구찌 뱀부 오드 퍼퓸 스프레이 50ml</h3>
+                        <small><s>소비자가 122,000원</s></small><br>
+                        <b style="color: rgb(43, 163, 6); font-size: large;">판매가 <label class="pPrice">115,000</label>원</b><br>
+                        <label>배송비 <b>무료</b></label><br>
+                        <label>수량</label><input type="number" value="1" class="pAmount" onchange="total();">
+                        <hr>
+                        <label style="margin-left: 20%;">총금액<i class="fa-regular fa-circle-question"></i><p class="arrow_box0">총금액은 배송비 불포함<br>구매 페이지에서 최종 확인바랍니다.</p></label><label class="totalPrice"></label><br>
+                        <button class="pay" onclick="javascript:location.href='./payment.html'">바로 구매</button>
+                        <button class="basket" onclick="javascript:alert('장바구니에 담겼습니다');">장바구니</button>
+                    </div>
+                </div>
+                <hr>
+                <h4>판매자 정보</h4>
+                <table class="sellerInfo">
+                    <tr>
+                        <th>판매자 상호명</th>
+                        <td>구찌코리아 본사 직영</td>
+                    </tr>
+                    <tr>
+                        <th>판매자 전화번호</th>
+                        <td>1577-2478</td>
+                    </tr>
+                </table>
+                <h5>판매자의 다른 인기 상품</h5>
+                <div class="container itemlist" style="width: 75%;">
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col-md-3 col-sm-12">
+                            <a href="./detail.html">
+                                <div class="card" style="width: auto;">
+                                    <img src="../resources/images/topProduct/other1.jpg" class="card-img-top">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><b>구찌 블룸 오 드 퍼퓸 스프레이 30ml</b></h6>
+                                        <p class="card-text"><b>97,800원</b></p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-12">
+                            <a href="./detail.html">
+                                <div class="card" style="width: auto;">
+                                    <img src="../resources/images/topProduct/other2.jpg" class="card-img-top">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><b>구찌 길티 뿌르 옴므 오드 스프레이 90ml</b></h6>
+                                        <p class="card-text"><b>145,000원</b></p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-12">
+                            <a href="./detail.html">
+                                <div class="card" style="width: auto;">
+                                    <img src="../resources/images/topProduct/other3.jpg" class="card-img-top">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><b>구찌 길티 오 드 퍼퓸 스프레이 90ml</b></h6>
+                                        <p class="card-text"><b>196,500원</b></p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-12">
+                            <a href="./detail.html">
+                                <div class="card" style="width: auto;">
+                                    <img src="../resources/images/topProduct/other4.jpg" class="card-img-top">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><b>구찌 플로라 바이 고져스 가드니아 EDP 50ml</b></h6>
+                                        <p class="card-text"><b>135,000원</b></p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <h4>상품 상세 설명</h4>
+                    <img class="imgNotice" src="../resources/images/topProduct/productNotice1.PNG" alt="상품상세설명고지1">
+                    <img class="imgNotice" src="../resources/images/topProduct/productNotice2.PNG" alt="상품상세설명고지2">
+            </div>
+            <div id="main_right">
+                <div>
+                    <table>
+                        <tr><th>최근 본 상품</th></tr>
+                        <tr><td><a href="#"><img src="../resources/images/main/sidebar_recent1.jpg" alt=""></a><p class="arrow_box">조말론 와일드 블루벨 코롱 30ml<br><br>39,900원</p></td></tr>
+                        <tr><td><a href="#"><img src="../resources/images/main/sidebar_recent2.jpg" alt=""></a><p class="arrow_box">비오템 옴므 아쿠아파워 클렌저 125ml<br><br>15,900원</p></td></tr>
+                        <tr><td><a href="#"><img src="../resources/images/main/sidebar_recent3.jpg" alt=""></a><p class="arrow_box">구찌 길티 뿌르 옴므 오드 뜨왈렛 스프레이 50ml<br><br>106,900원</p></td></tr>
+                    </table>
+                    <button id="toTheTop" style="font-weight: bold; background-color: #2e95e9; color: white;">top  <i class="fa-solid fa-arrow-up"></i></button>
+                </div>
+            </div>
+        </main>
+        <footer class="navbar navbar-expand-lg">
+            <div id="footer" class= "container-fluid">
+                <div class="logo">
+                    <a href="#"><img src="../resources/images/main/logo.PNG" alt=""></a>
+                </div>
+                <div class="footer footer1">
+                    <ul>
+                        <li>회사명 : (주)코스마켓</li>
+                        <li>대표이사 : 정유송</li>
+                        <li>사업자등록번호 : 12-123-12345</li>
+                        <li>주소 : 서울시 종로구 청계빌딩2층</li>
+                    </ul>
+                </div>
+                <div class="footer footer2">
+                    <ul>
+                        <li><a href="/admin/companyIntro.do">회사소개</a></li>
+                        <li><a href="/admin/companyHistory.do">회사연혁</a></li>
+                        <li><a href="">이용약관</a></li>
+                        <li><a href="">개인정보취급방침</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <script>
+            window.onload = function(){
+                total();
+            }
+
+            function total() {
+                document.querySelector(".totalPrice").innerText = 
+                document.querySelector(".pAmount").value * document.querySelector(".pPrice").innerText.replace(",","") +" 원";
+            }
+
+
+            document.querySelector("#toTheTop").addEventListener("click", function() {
+                document.documentElement.scrollTop = 0;
+            })
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    </body>
+</html>

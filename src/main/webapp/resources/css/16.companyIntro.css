@@ -1,0 +1,46 @@
+main {
+  all: unset;
+}
+body {
+  overflow: hidden;
+  margin: 0;
+}
+
+.section {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#section1 {
+  background-image: url("../images/intro/intro1.jpg");
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+}
+
+#section2 {
+  background-image: url("../images/intro/intro2.jpg");
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+}
+
+#section3 {
+  background-image: url("../images/intro/intro3.jpg");
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+}
+p {
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 5rem;
+  font-weight: 900;
+  color: white;
+  text-shadow: 5px 5px 5px blue, 8px 8px 5px white, 10px 10px 5px black;
+}
+.p3 label {
+  font-family: none;
+  margin-right: 30px;
+  color: rgb(24, 78, 226);
+}

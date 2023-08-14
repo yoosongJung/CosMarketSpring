@@ -1,0 +1,49 @@
+h2 b{
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 3rem;
+  }
+  #main_middle {
+    margin-top: 30px;
+  }
+
+.search {
+display: flex;
+justify-content: right;
+margin-right: 15%;
+}
+#findProduct {
+font-size: inherit;
+background-color: rgba(0,0,0,0);
+border: none;
+margin-left: 5px;
+}
+.write {
+padding: 5px 25px;
+border-radius: 5px;
+color: white;
+background-color: rgb(6, 174, 240);
+margin-left: 10%;
+}
+#main_middle table {
+    margin: 3rem auto;
+    width: 90%;
+  }
+  #main_middle th {
+    border: 1px solid #ccc;
+    background-color: #ccc;
+    text-align: center;
+  }
+  #main_middle tr, #main_middle td {
+    text-align: center;
+    border: 1px solid #ccc;
+  }  
+  td button {
+    border: none;
+    background-color: transparent;
+  }
+  .pagination li {
+    margin: 0 1%;
+  }
+  i:hover {
+    font-size: unset;
+  }

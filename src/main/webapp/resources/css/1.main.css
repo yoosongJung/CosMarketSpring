@@ -1,0 +1,326 @@
+
+header {
+    height: 8rem;
+    display: flex;
+}
+.logo {
+    width: 25%;
+    height: 100%;
+}
+    .logo img {
+        width: 100%;
+        height: 100%;
+    }
+    #nav {
+    height: 100%;
+    width: 75%;
+    background-size: cover;
+    background-image: url("../images/main/navbar2.png");
+    display: flex;
+}
+    #nav2 {
+        width: 45%;
+        text-align: center;
+    }
+    #nav2 input {
+            border-radius: 20px;
+            width: 70%;
+            height: 25%;
+            text-align: center;
+            margin-top: 30px;
+        }
+        i:hover {
+            font-size: xx-large;
+        }
+        #navSearch {
+            font-size: inherit;
+            background-color: rgba(0,0,0,0);
+            border: none;
+        }
+        #nav3 {
+            width: 55%;
+        }
+        #nav ul li {
+            margin: 5px 10px;
+        }
+        #nav ul li a {
+            font-size: x-large;
+            color: white;
+            font-family: 'Nanum Pen Script', cursive;
+            font-weight: 700;
+        }
+        #nav ul li a:hover, .footer2 ul li a:hover, .main_last a {
+            color: black;
+        }
+        #nav ul li a:link, .footer2 ul li a:link, .col-md-4 a, .main_last a{
+            text-decoration-line: none;
+        }
+        #nav ul li a:visited, .footer2 ul li a:visited {
+            text-decoration-line: none;
+        }
+
+main {
+    /* overflow : hidden + height : auto 했을때 높이 상관없이 요소들어갈때마다 자동으로 늘어남 */
+    /* overflow : clip 하면 hidden 적용 + sticky 사용할 수 있음 */
+    overflow:clip; 
+    height:auto;
+    display: flex;
+}
+    #main_left {
+        width: 15%;
+    }
+    #main_middle {
+        width: 70%;
+    }
+        .dropdown {
+            position: relative;
+        }
+        .dropbtn {
+            background-color: #2e95e9;
+            color: white;
+            font-family: 'Nanum Pen Script', cursive;
+            font-weight: 500;
+            padding: 16px;
+            font-size: large;
+            border: none;
+            width: 100%;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #5fd0ec;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 10px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dropdown-content a:hover {background-color: #ddd;}
+        
+        .dropdown:hover .dropdown-content {display: block;}
+        
+        .dropdown:hover .dropbtn {background-color: #5fd0ec;}
+
+        @media (max-width: 767px) {
+            .popularBrand .carousel-inner .carousel-item > div {
+                display: none;
+            }
+            .popularBrand .carousel-inner .carousel-item > div:first-child {
+                display: block;
+            }
+            
+        }
+    
+        .popularBrand .carousel-inner .carousel-item.active,
+        .popularBrand .carousel-inner .carousel-item-next,
+        .popularBrand .carousel-inner .carousel-item-prev {
+            display: flex;
+        }
+    
+        /* medium and up screens */
+        @media (min-width: 768px) {
+    
+            .popularBrand .carousel-inner .carousel-item-end.active,
+            .popularBrand .carousel-inner .carousel-item-next {
+                transform: translateX(25%);
+            }
+    
+            .popularBrand .carousel-inner .carousel-item-start.active, 
+            .popularBrand .carousel-inner .carousel-item-prev {
+                transform: translateX(-25%);
+            }
+
+            
+        }
+    
+        .popularBrand .carousel-inner .carousel-item-end,
+        .popularBrand .carousel-inner .carousel-item-start { 
+            transform: translateX(0);
+        }
+        .popularBrand .card:hover {
+            margin: 7px;
+            z-index: 1;
+            box-shadow: -5px -5px 20px 0px #2e95e9, 5px 5px 20px 0px #2e95e9;
+        }
+        .col-md-4>a:hover {
+            .card {
+                box-shadow: #FFF 0 -1px 4px, #ff0 0 -2px 10px, #ff8000 0 -10px 20px, red 0 -15px 40px, 5px 5px 15px 5px rgba(0,0,0,0);
+            }
+        }
+
+        .main_last>div {
+            width: 35%;
+        }
+            #main_notice>p, #main_QA>p {
+                color: white;
+                font-family: 'Nanum Pen Script', cursive;
+                font-weight: 900;
+                font-size: x-large;
+            }
+            #main_notice>div, #main_QA>div {
+                background-color: rgb(190, 223, 236);
+                padding: 10px;
+                margin-top: -15px;
+            }
+    #main_right {
+        width: 15%;
+    }
+        #main_right>div {
+            position: sticky;
+            top: 0;
+        }
+        #main_right button {
+            width: 60%;
+            float: right;
+            margin-top: 1rem;
+            height: 2rem;
+        }
+        #main_right table {
+            width: 60%;
+            height: 20rem;
+            border: 3px solid rgb(234, 234, 53);
+            float: right;
+            margin-top: 7.5rem;
+            z-index: 2;
+        }
+        #main_right table tr {
+            border: 5px solid rgb(234, 234, 53);
+        }
+        #main_right table tr th {
+                font-family: 'Nanum Pen Script', cursive;
+                font-size: larger;
+                font-weight: 900;
+                background-color: rgb(234, 234, 53);
+                text-align: center;
+            }
+            #main_right table tr td a img{
+                width: 100%;
+            }
+            #main_right table tr td {
+                position: relative;
+                /* display: inline-block; */
+            }
+            #main_right table tr td a {
+                display: flex;
+            }
+            .arrow_box {
+                display: none;
+                position: absolute;
+                width: 100%;
+                padding: 8px;
+                left: 0;
+                -webkit-border-radius: 8px;
+                -moz-border-radius: 8px;
+                border-radius: 8px;
+                background: #333;
+                color: #fff;
+                font-size: 14px;
+                z-index: 1;
+            }
+            
+            .arrow_box:after {
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                width: 0;
+                height: 0;
+                margin-left: -10px;
+                border: solid transparent;
+                border-color: rgba(51, 51, 51, 0);
+                border-bottom-color: #333;
+                border-width: 10px;
+                pointer-events: none;
+                content: ' ';
+            }
+            
+            a:hover + p.arrow_box {
+                display: block;
+            }
+
+footer {
+    height: 6rem;
+}
+    #footer {
+        height: 100%;
+        width: 70%;
+        margin: 0 auto;
+        display: flex;
+    }
+        .footer {
+            width: 75%;
+            height: 100%;
+            background-color: skyblue;
+        }
+        .footer1 {
+            width: 35%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+            .footer1 ul {
+                height: 100%;
+                display: flex;
+                list-style-type: none;
+                flex-wrap:  wrap;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: -5px;
+            }
+            .footer1 ul li {
+                font-size: medium;
+                color: black;
+                font-family: 'Nanum Pen Script', cursive;
+                font-weight: 900;
+                margin: 0px 5px;
+                line-height: 0.7;
+            }
+        .footer2 {
+            width: 40%;
+            display: flex;
+            align-items: center;
+        }
+            .footer2 ul {
+                display: flex;
+                height: 100%;
+                flex-wrap:  wrap;
+                list-style-type: none;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: -5px;
+            }
+            .footer2 ul li {
+                margin: 0px 10px;
+            }
+            .footer2 ul li a {
+                font-size: large;
+                color: white;
+                font-family: 'Nanum Pen Script', cursive;
+                font-weight: 900;
+            }
+        @media screen and (max-width: 990px){
+            #navbarNavDropdown {
+                background-color: rgba(112, 200, 235, 0.5);
+            }
+        }
+        .bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        
+        .bg-video__content {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            
+        }

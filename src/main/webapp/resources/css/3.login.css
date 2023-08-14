@@ -1,0 +1,109 @@
+.login-container{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: center;
+    
+}
+.login-form-1{
+    padding: 5%;
+    background-color: rgb(152, 211, 235) ;
+    box-shadow:-5px -5px 20px 0px purple, 5px 5px 20px 0px purple;
+    border-radius: 50px;
+}
+.login-form-1 h3{
+    font-family: 'Nanum Pen Script', cursive;
+    text-align: center;
+    color: #0062cc;
+    font-weight: bold;
+}
+.login-form-2{
+    padding: 5%;
+    background: rgb(143, 49, 143);
+    border-radius: 50px;
+    box-shadow: -5px -5px 20px 0px #2e95e9, 5px 5px 20px 0px #2e95e9;
+}
+.login-form-2 h3{
+    text-align: center;
+    font-family: 'Nanum Pen Script', cursive;
+    font-weight: bold;
+    color: #fff;
+}
+.login-container form{
+    padding: 10%;
+}
+.btnSubmit
+{
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+.login-form-1 .btnSubmit{
+    font-weight: 300;
+    color: #fff;
+    background-color: #0062cc;
+}
+.login-form-2 .btnSubmit{
+    font-weight: 300;
+    color: #fff;
+    background-color: #222;
+}
+.login-form-2 .ForgetPwd{
+    color: #fff;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: larger;
+    font-weight: 600;
+    text-decoration: none;
+}
+.login-form-1 .ForgetPwd{
+    color: #0062cc;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: larger;
+    font-weight: 600;
+    text-decoration: none;
+}
+.ForgetPwd:hover {
+    font-size: x-large;
+}
+
+.btnSubmit:hover {
+    color: greenyellow;
+    font-weight: 900;
+}
+
+.row {
+    width: 100%;
+    padding: 15px;
+}
+
+.logo a {
+    all: unset;
+}
+#main_middle{
+    display: flex;
+    width: 100vw;
+}
+.ad {
+    width: 25%;
+    height: 30vh;
+    margin-top: 15%;
+    margin-right: 2%;
+    border: 1px solid black;
+    box-shadow: 15px 10px 5px #ccc;
+    position: relative;
+}
+i {
+    width: 10%;
+    position: absolute;
+    left: 80%;
+    top: 85%;
+    font-size: large;
+}
+
+img {
+    width: 90%;
+    height: 90%;
+    border: 1px solid black;
+}

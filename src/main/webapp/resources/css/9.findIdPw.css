@@ -1,0 +1,32 @@
+main {
+  margin-top: 30px;
+}
+h2 {
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: xx-large;
+}
+h5 {
+  font-family: 'Nanum Pen Script', cursive;
+  color: rgb(210, 210, 7);
+  font-size: xx-large;
+  font-weight: 900;
+}
+.detailFind {
+  display: flex;
+  margin: 30px 20px;
+}
+.detailFind>div {
+  width: 100%;
+}
+.detailFind button {
+  background-color: orange;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 3px 7px;
+}
+.detailKey {
+  border: 3px solid rgb(210, 210, 7);;
+  border-radius: 15px;
+  padding: 0 5px;
+}
