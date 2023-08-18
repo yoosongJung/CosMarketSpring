@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,15 +49,15 @@ public class MemberController {
 		try {
 			int result = service.insertMemberBuyer(memberBuyer);
 			if(result > 0) {
-				model.addAttribute("msg","È¸¿ø°¡ÀÔ ¿Ï·á");
+				model.addAttribute("msg","íšŒì›ê°€ì… ì™„ë£Œ");
 				model.addAttribute("url", "/memberInfo/success.do");
 				return "commonDisplay/serviceSuccess";
 			} else {
-				model.addAttribute("msg","È¸¿ø°¡ÀÔÀÌ ¿Ï·áµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+				model.addAttribute("msg","íšŒì›ê°€ì…ì´ ì™„ë£Œë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
 				return "commonDisplay/serviceFailed";
 			}
 		} catch (Exception e) {
-			e.printStackTrace(); // ÄÜ¼ÖÃ¢¿¡ »¡°£»öÀ¸·Î ¶ß°ÔÇÔ
+			e.printStackTrace(); // ì½˜ì†”ì°½ì— ë¹¨ê°„ìƒ‰ìœ¼ë¡œ ëœ¨ê²Œí•¨
 			model.addAttribute("msg", e.getMessage());
 			return "commonDisplay/serviceFailed";
 		}
@@ -81,15 +82,15 @@ public class MemberController {
 		try {
 			int result = service.insertMemberSeller(memberSeller);
 			if(result > 0) {
-				model.addAttribute("msg","È¸¿ø°¡ÀÔ ¿Ï·á");
+				model.addAttribute("msg","íšŒì›ê°€ì… ì™„ë£Œ");
 				model.addAttribute("url", "/memberInfo/success.do");
 				return "commonDisplay/serviceSuccess";
 			} else {
-				model.addAttribute("msg","È¸¿ø°¡ÀÔÀÌ ¿Ï·áµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+				model.addAttribute("msg","íšŒì›ê°€ì…ì´ ì™„ë£Œë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
 				return "commonDisplay/serviceFailed";
 			}
 		} catch (Exception e) {
-			e.printStackTrace(); // ÄÜ¼ÖÃ¢¿¡ »¡°£»öÀ¸·Î ¶ß°ÔÇÔ
+			e.printStackTrace(); // ì½˜ì†”ì°½ì— ë¹¨ê°„ìƒ‰ìœ¼ë¡œ ëœ¨ê²Œí•¨
 			model.addAttribute("msg", e.getMessage());
 			return "commonDisplay/serviceFailed";
 		}
@@ -118,7 +119,7 @@ public class MemberController {
 					model.addAttribute("memberType", memberType);
 					return "redirect:/index.jsp";
 				} else {
-					model.addAttribute("msg","·Î±×ÀÎ Á¤º¸ ºÒÀÏÄ¡");
+					model.addAttribute("msg","ë¡œê·¸ì¸ ì •ë³´ ë¶ˆì¼ì¹˜");
 					model.addAttribute("url","/memberInfo/login.do");
 					return "commonDisplay/serviceFailed";
 				}
@@ -139,7 +140,7 @@ public class MemberController {
 					model.addAttribute("memberType", memberType);
 					return "redirect:/index.jsp";
 				} else {
-					model.addAttribute("msg","·Î±×ÀÎ Á¤º¸ ºÒÀÏÄ¡");
+					model.addAttribute("msg","ë¡œê·¸ì¸ ì •ë³´ ë¶ˆì¼ì¹˜");
 					model.addAttribute("url","/memberInfo/login.do");
 					return "commonDisplay/serviceFailed";
 				}
@@ -158,11 +159,11 @@ public class MemberController {
 		if(session != null) {
 			session.setComplete();
 			if(session.isComplete()) {
-				// ¼¼¼Ç ¸¸·á À¯È¿¼º Ã¼Å©
+				// ì„¸ì…˜ ë§Œë£Œ ìœ íš¨ì„± ì²´í¬
 			}
 			return "redirect:/index.jsp";
 		} else {
-			model.addAttribute("msg", "·Î±×¾Æ¿ôÀ» ¿Ï·áÇÏÁö ¸øÇß½À´Ï´Ù.");
+			model.addAttribute("msg", "ë¡œê·¸ì•„ì›ƒì„ ì™„ë£Œí•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
 			return "commonDisplay/serviceFailed";
 		}
 	}
@@ -180,7 +181,7 @@ public class MemberController {
 					model.addAttribute("member", mOne);
 					return "member/common/myPage";
 				} else {
-					model.addAttribute("msg", "È¸¿øÁ¤º¸¸¦ °¡Á®¿ÀÁö ¸øÇß½À´Ï´Ù.");
+					model.addAttribute("msg", "íšŒì›ì •ë³´ë¥¼ ê°€ì ¸ì˜¤ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
 					return "commonDisplay/serviceFailed";
 				}
 			} catch (Exception e) {
@@ -195,7 +196,7 @@ public class MemberController {
 					model.addAttribute("member", mOne);
 					return "member/common/myPage";
 				} else {
-					model.addAttribute("msg", "È¸¿øÁ¤º¸¸¦ °¡Á®¿ÀÁö ¸øÇß½À´Ï´Ù.");
+					model.addAttribute("msg", "íšŒì›ì •ë³´ë¥¼ ê°€ì ¸ì˜¤ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
 					return "commonDisplay/serviceFailed";
 				}
 			} catch (Exception e) {
@@ -217,43 +218,99 @@ public class MemberController {
 			@RequestParam("memberPw") String memberPw,
 			@RequestParam("memberType") String memberType,
 			Model model) {
-		MemberBuyer mOneBuyer = null;
-		MemberSeller mOneSeller = null;
-		if(memberType.equals("buyer")) {
-			MemberBuyer memberBuyer = new MemberBuyer(memberId, memberPw);
-			mOneBuyer = service.selectCheckLoginBuyer(memberBuyer);
-		} else {
-			MemberSeller memberSeller = new MemberSeller(memberId, memberPw);
-			mOneSeller = service.selectCheckLoginSeller(memberSeller);
-		}
 		try {
+			MemberBuyer mOneBuyer = null;
+			MemberSeller mOneSeller = null;
+			if(memberType.equals("buyer")) {
+				MemberBuyer memberBuyer = new MemberBuyer(memberId, memberPw);
+				mOneBuyer = service.selectCheckLoginBuyer(memberBuyer);
+			} else {
+				MemberSeller memberSeller = new MemberSeller(memberId, memberPw);
+				mOneSeller = service.selectCheckLoginSeller(memberSeller);
+			}
 			if(mOneBuyer != null || mOneSeller != null) {
 				int result = service.deleteMember(memberId, memberType);
 				if(result > 0) {
-					// ¼º°ø
-					model.addAttribute("msg", "È¸¿øÅ»Åğ ¼º°ø");
+					// ì„±ê³µ
+					model.addAttribute("msg", "íšŒì›íƒˆí‡´ ì„±ê³µ");
 					model.addAttribute("url", "/memberInfo/logout.do");
 					return "commonDisplay/serviceSuccess";
 				} else {
-					// ½ÇÆĞ
-					model.addAttribute("msg", "È¸¿øÅ»Åğ ½ÇÆĞ(ºñ¹Ğ¹øÈ£ ºÒÀÏÄ¡)");
+					// ì‹¤íŒ¨
+					model.addAttribute("msg", "íšŒì›íƒˆí‡´ ì‹¤íŒ¨(ë¹„ë°€ë²ˆí˜¸ ë¶ˆì¼ì¹˜)");
 					model.addAttribute("url", "/member/delete.do");
 					return "commonDisplay/serviceFailed";
 				}
 			} else {
-				// ½ÇÆĞ
-				model.addAttribute("msg", "È¸¿øÅ»Åğ ½ÇÆĞ(ºñ¹Ğ¹øÈ£ ºÒÀÏÄ¡)");
+				// ì‹¤íŒ¨
+				model.addAttribute("msg", "íšŒì›íƒˆí‡´ ì‹¤íŒ¨(ë¹„ë°€ë²ˆí˜¸ ë¶ˆì¼ì¹˜)");
 				model.addAttribute("url", "/member/delete.do");
 				return "commonDisplay/serviceFailed";
 			}
-			
-//			int result = service.removeMember(memberId);
-//			if(result > 0) {
-//				return "redirect:/member/logout.do";
-//			} else {
-//				model.addAttribute("msg", "È¸¿øÁ¤º¸¸¦ »èÁ¦ÇÏÁö ¸øÇß½À´Ï´Ù.");
-//				return "commonDisplay/serviceFailed";
-//			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("msg", e.getMessage());
+			return "commonDisplay/serviceFailed";
+		}
+	}
+	
+	@RequestMapping(value="/member/update.do", method=RequestMethod.POST)
+	public String updateMember(// @@@@@@@@@@@@@@@@@modelattributeë¡œ ë°›ê³  ìƒˆë¹„ë²ˆ,ìƒˆë¹„ë²ˆì²´í¬ëŠ” ë”°ë¡œ ë°›ê³ 
+			@ModelAttribute MemberBuyer mBuyer,
+			@ModelAttribute MemberSeller mSeller,
+			@RequestParam("memberPwNew") String memberPwNew,
+			@RequestParam("memberPwNewCheck") String memberPwNewCheck,
+			@RequestParam("memberType") String memberType,
+			Model model) {
+		try {
+			int result = 0;
+			if(memberType.equals("buyer")) {
+				MemberBuyer memberBuyer = new MemberBuyer();
+				memberBuyer.setMemberId(mBuyer.getMemberId());
+				memberBuyer.setMemberPw(mBuyer.getMemberPw());
+				MemberBuyer mOne = service.selectCheckLoginBuyer(memberBuyer);
+				if(mOne != null) {
+					mBuyer.setMemberPw(memberPwNew);
+					mBuyer.setMemberPwCheck(memberPwNewCheck);
+					result = service.updateBuyerMember(mBuyer);
+					if(result > 0) {
+						model.addAttribute("msg", "íšŒì›ì •ë³´ ìˆ˜ì • ì™„ë£Œ");
+						model.addAttribute("url", "/index.jsp");
+						return "commonDisplay/serviceSuccess";
+					} else {
+						model.addAttribute("msg", "íšŒì›ì •ë³´ ìˆ˜ì •ì´ ì™„ë£Œë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
+						model.addAttribute("url", "/member/myInfo.do?memberId="+ mBuyer.getMemberId()+"&memberType="+ memberType);
+						return "commonDisplay/serviceFailed";
+					}
+				} else {
+					model.addAttribute("msg", "í˜„ì¬ ë¹„ë°€ë²ˆí˜¸ ë¶ˆì¼ì¹˜");
+					model.addAttribute("url", "/member/myInfo.do?memberId="+ mBuyer.getMemberId()+"&memberType="+ memberType);
+					return "commonDisplay/serviceFailed";
+				}
+			} else {
+				MemberSeller memberSeller = new MemberSeller();
+				memberSeller.setMemberId(mSeller.getMemberId());
+				memberSeller.setMemberPw(mSeller.getMemberPw());
+				MemberSeller mOne = service.selectCheckLoginSeller(memberSeller);
+				if(mOne != null) {
+					mSeller.setMemberPw(memberPwNew);
+					mSeller.setMemberPwCheck(memberPwNewCheck);
+					result = service.updateSellerMember(mSeller);
+					if(result > 0) {
+						model.addAttribute("msg", "íšŒì›ì •ë³´ ìˆ˜ì • ì™„ë£Œ");
+						model.addAttribute("url", "/index.jsp");
+						return "commonDisplay/serviceSuccess";
+					} else {
+						model.addAttribute("msg", "íšŒì›ì •ë³´ ìˆ˜ì •ì´ ì™„ë£Œë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
+						model.addAttribute("url", "/member/myInfo.do?memberId="+ mSeller.getMemberId()+"&memberType="+ memberType);
+						return "commonDisplay/serviceFailed";
+					}
+				} else {
+					model.addAttribute("msg", "í˜„ì¬ ë¹„ë°€ë²ˆí˜¸ ë¶ˆì¼ì¹˜");
+					model.addAttribute("url", "/member/myInfo.do?memberId="+ mSeller.getMemberId()+"&memberType="+ memberType);
+					return "commonDisplay/serviceFailed";
+				}
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("msg", e.getMessage());

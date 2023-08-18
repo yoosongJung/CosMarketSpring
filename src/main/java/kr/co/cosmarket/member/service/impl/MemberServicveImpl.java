@@ -43,20 +43,20 @@ public class MemberServicveImpl implements MemberService{
 
 	@Override
 	public int deleteMember(String memberId, String memberType) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = mStore.deleteMember(sqlSession, memberId, memberType);
+		return result;
 	}
 
 	@Override
 	public int updateBuyerMember(MemberBuyer memberBuyer) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = mStore.updateBuyerMember(sqlSession, memberBuyer);
+		return result;
 	}
 
 	@Override
 	public int updateSellerMember(MemberSeller memberSeller) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = mStore.updateSellerMember(sqlSession, memberSeller);
+		return result;
 	}
 
 	@Override

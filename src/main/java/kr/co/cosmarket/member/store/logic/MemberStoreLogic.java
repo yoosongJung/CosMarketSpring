@@ -24,20 +24,26 @@ public class MemberStoreLogic implements MemberStore{
 
 	@Override
 	public int updateBuyerMember(SqlSession session, MemberBuyer memberBuyer) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = session.update("MemberMapper.updateBuyerMember", memberBuyer);
+		return result;
 	}
 
 	@Override
 	public int updateSellerMember(SqlSession session, MemberSeller memberSeller) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = session.update("MemberMapper.updateSellerMember", memberSeller);
+		return result;
 	}
 
 	@Override
 	public int deleteMember(SqlSession session, String memberId, String memberType) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		if(memberType.equals("buyer")) {
+			result = session.delete("MemberMapper.deleteMemberBuyer", memberId);
+		} else {
+			result = session.delete("MemberMapper.deleteMemberSeller", memberId);
+		}
+		
+		return result;
 	}
 
 	@Override
