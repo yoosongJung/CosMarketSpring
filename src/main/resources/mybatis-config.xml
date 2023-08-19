@@ -6,9 +6,10 @@
 	<typeAliases>
 		<typeAlias type="kr.co.cosmarket.member.domain.MemberBuyer" alias="MemberBuyer"/>
 		<typeAlias type="kr.co.cosmarket.member.domain.MemberSeller" alias="MemberSeller"/>
+		<typeAlias type="kr.co.cosmarket.notice.domain.Notice" alias="Notice"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml" />
-		<!-- <mapper resource="mappers/notice-mapper.xml" /> -->
+		<mapper resource="mappers/notice-mapper.xml" />
 	</mappers>
 </configuration>

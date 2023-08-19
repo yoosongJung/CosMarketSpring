@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -41,13 +42,13 @@
 	        	<div id="noticeDetailBlock">
 					<div class="titlePassword">
 	                    <label>&nbsp;글번호 &nbsp;</label>
-	                    <input type="text" style="width: 5%;" value=${requestScope.notice.noticeNo } readonly>
+	                    <input type="text" style="width: 5%;" value="${notice.noticeNo }" readonly>
 	                    <label>제목</label>
-	                    <input type="text" style="width: 25%;" value=${notice.noticeSubject } readonly>
+	                    <input type="text" style="width: 30%;" value="${notice.noticeSubject }" readonly>
 	                    <label>글쓴이</label>
-	                    <input type="text" style="width: 10%;" value=${notice.noticeWriter } readonly>
+	                    <input type="text" style="width: 10%;" value="${notice.noticeWriter }" readonly>
 	                    <label>작성일</label>
-	                    <input type="text" style="width: 100px;" value=${notice.noticeDate } readonly>
+	                    <input type="text" style="width: 100px;" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${notice.noticeDate }"/>" readonly>
 	                </div>
 	                    <br>
 						<p>${notice.noticeContent }</p>
@@ -76,8 +77,8 @@
                 </div>
                 <div class="footer footer2">
                     <ul>
-                        <li><a href="..//admin/companyIntro.do">회사소개</a></li>
-                        <li><a href="..//admin/companyHistory.do">회사연혁</a></li>
+                        <li><a href="/admin/companyIntro.do">회사소개</a></li>
+                        <li><a href="/admin/companyHistory.do">회사연혁</a></li>
                         <li><a href="">이용약관</a></li>
                         <li><a href="">개인정보취급방침</a></li>
                     </ul>

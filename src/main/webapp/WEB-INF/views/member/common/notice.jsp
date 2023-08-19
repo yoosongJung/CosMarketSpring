@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -30,10 +31,20 @@
                 <h2><b>공지 사항</b></h2>
                 <hr>
                 <div class="search">
-                    <input type="text" placeholder="제목을 입력해주세요" style="width: 250px">
-                    <button id="findProduct" onclick="findWrite();"><i class="fa-solid fa-magnifying-glass" style="color: blue;"></i></button>
+                    <!-- <input type="text" placeholder="검색어를 입력해주세요" style="width: 250px">
+                    <button id="findProduct" onclick="findWrite();"><i class="fa-solid fa-magnifying-glass" style="color: blue;"></i></button> -->
+                    <form action="/notice/search.do" method="get">
+								<select name="searchCondition">
+									<option value="all">전체</option>
+									<option value="writer">작성자</option>
+									<option value="title">제목</option>
+									<option value="content">내용</option>
+								</select>			
+								<input type="text" name="searchKeyword"placeholder="검색어를 입력하세요.">
+								<button id="findProduct" type="submit"><i class="fa-solid fa-magnifying-glass" style="color: blue;"></i></button>
+					</form>	
 	                <c:if test="${memberId eq 'admin' }">
-	                <button class="insertNotice" onclick="javascript: location.href='/notice/insert.do'">공지사항 등록</button>
+	                <button class="insertNotice" onclick="javascript: location.href='/notice/insert.do'" style="margin-top:-20px;">공지사항 등록</button>
 	                </c:if>
                 </div>
                 <table>
@@ -51,13 +62,42 @@
 								<td>${notice.noticeNo }</td>
 								<td><a href="/notice/detail.do?noticeNo=${notice.noticeNo }">${notice.noticeSubject }</a></td>
 								<td style="color:green; font-weight:900">${notice.noticeWriter }</td>
-								<td>${notice.noticeDate }</td>
+								<td><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${notice.noticeDate }"/></td>
 							</tr>
 						</c:forEach>
-						<tr>
-							<td colspan="4" align="center">${pageNavi }</td>
-						</tr>
 					</tbody>
+					<tfoot>
+						<tr align="center">
+							<td colspan="4">
+							<c:if test="${pInfo.currentPage != 1 }">
+								<a href="/notice/list.do?currentPage=${pInfo.currentPage - 1 }">[이전]</a>&nbsp;
+							</c:if>
+							<c:forEach begin="${pInfo.startNavi }" end="${pInfo.endNavi }" var="p">
+								<c:url var="pageUrl" value="/notice/list.do">
+									<c:param name="currentPage" value="${p }"></c:param>
+								</c:url>
+								<a href="${pageUrl }">${p }</a>&nbsp;
+							</c:forEach>
+							<c:if test="${pInfo.currentPage ne pInfo.naviTotalCount }">
+								<a href="/notice/list.do?currentPage=${pInfo.currentPage + 1 }">[다음]</a>
+							</c:if>
+							</td>
+						</tr>
+						<!-- <tr>
+							<td colspan="4">
+							<form action="/notice/search.do" method="get">
+								<select name="searchCondition">
+									<option value="all">전체</option>
+									<option value="writer">작성자</option>
+									<option value="title">제목</option>
+									<option value="content">내용</option>
+								</select>			
+								<input type="text" name="searchKeyword"placeholder="검색어를 입력하세요.">
+								<input type="submit" value="검색">
+							</form>	
+							</td>
+						</tr> -->
+					</tfoot>
                 </table>
             </div>
             <div id="main_right">
