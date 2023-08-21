@@ -65,6 +65,9 @@ public class NoticeStoreLogic implements NoticeStore{
 
 	@Override
 	public int insertNotice(SqlSession session, Notice notice) {
+		System.out.println("@@@@@@@@@@@@@@@@@"+notice.toString());
+		System.out.println("@@@@@@@@@@@@@@@@@"+notice.getNoticeWriter());
+		System.out.println("@@@@@@@@@@@@@@@@@"+notice.getNoticeFilename());
 		int result = session.insert("NoticeMapper.insertNotice", notice);
 		return result;
 	}

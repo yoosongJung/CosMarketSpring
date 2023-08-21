@@ -212,6 +212,10 @@ public class NoticeController {
 				notice.setNoticeFilename(fileName);
 				notice.setNoticeFilepath(savePath);
 				notice.setNoticeFilelength(fileLength);
+			} else {
+				notice.setNoticeFilename("");
+				notice.setNoticeFilepath("");
+				//notice.setNoticeFilelength(0);
 			}
 			int result = service.insertNotice(notice);
 			if(result > 0) {
