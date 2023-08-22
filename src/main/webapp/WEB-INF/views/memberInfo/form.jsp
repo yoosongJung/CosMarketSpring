@@ -15,6 +15,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <title>회원가입</title>
     </head>
     <body>
@@ -198,7 +199,21 @@
                 if(idVal.value == "") {
                     document.querySelector(".buyerCheckId").innerText = "아이디를 입력하세요";
                 } else {
-                    document.querySelector(".buyerCheckId").innerText = "사용 가능";
+                	var data = {'memberId':idVal.value,'memberType':"buyer"};
+                	$.ajax({
+                        type : 'POST',
+                        url : 'checkId.do',
+                        data : data,
+                        dataType : 'text',
+                        success : function (data) {alert(data);
+                            if(data == "false"){
+                            	document.querySelector(".buyerCheckId").innerText = "사용 가능";
+                            } else {
+                            	document.querySelector(".buyerCheckId").innerText = "중복된 아이디입니다";
+                            }
+                            
+                            }
+                        });
                 }
             })
             document.querySelector(".sellerCheckSameId").addEventListener("click", () => {

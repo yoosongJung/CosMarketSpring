@@ -5,10 +5,13 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -91,6 +94,36 @@ public class MemberController {
 			}
 		} catch (Exception e) {
 			e.printStackTrace(); // 콘솔창에 빨간색으로 뜨게함
+			model.addAttribute("msg", e.getMessage());
+			return "commonDisplay/serviceFailed";
+		}
+	}
+	
+	@RequestMapping(value="/memberInfo/checkId.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String registerCheckId(
+			@RequestParam("memberId") String memberId,
+			@RequestParam("memberType") String memberType,
+			Model model) {
+		System.out.println(memberId);
+		try {
+			if(memberType.equals("buyer")) {
+				MemberBuyer mOne = service.selectOneBuyerById(memberId);
+				if(mOne != null) {
+					return "true";
+				} else {
+					return "false";
+				}
+			} else {
+				MemberSeller mOne = service.selectOneSellerById(memberId);
+				if(mOne != null) {
+					return "true";
+				} else {
+					return "false";
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 			model.addAttribute("msg", e.getMessage());
 			return "commonDisplay/serviceFailed";
 		}
