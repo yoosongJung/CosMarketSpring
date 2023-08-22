@@ -205,7 +205,7 @@
                         url : 'checkId.do',
                         data : data,
                         dataType : 'text',
-                        success : function (data) {alert(data);
+                        success : function (data) {
                             if(data == "false"){
                             	document.querySelector(".buyerCheckId").innerText = "사용 가능";
                             } else {
@@ -221,7 +221,21 @@
                 if(idVal.value == "") {
                     document.querySelector(".sellerCheckId").innerText = "아이디를 입력하세요";
                 } else {
-                    document.querySelector(".sellerCheckId").innerText = "사용 가능";
+                	var data = {'memberId':idVal.value,'memberType':"seller"};
+                	$.ajax({
+                        type : 'POST',
+                        url : 'checkId.do',
+                        data : data,
+                        dataType : 'text',
+                        success : function (data) {
+                            if(data == "false"){
+                            	document.querySelector(".sellerCheckId").innerText = "사용 가능";
+                            } else {
+                            	document.querySelector(".sellerCheckId").innerText = "중복된 아이디입니다";
+                            }
+                            
+                            }
+                        });
                 }
             })
             document.querySelector(".checkSellerNo").addEventListener("click", () => {

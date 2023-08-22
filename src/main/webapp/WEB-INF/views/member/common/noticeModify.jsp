@@ -46,14 +46,15 @@
         	<div id="main_middle">
 				<h2><b>공지사항 수정</b></h2>
 				<hr>
-				<form action="/notice/modify.do" method="post">
+				<form action="/notice/modify.do" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="noticeNo" value="${notice.noticeNo }">
 					<fieldset>
 						<!-- <legend>공지사항 수정</legend> -->
 						
 						<label>제목</label>
 						<input type="text" style="width:500px" id="" name="noticeSubject" value="${notice.noticeSubject }">
-						
+						<label>첨부파일</label>
+						<input type="file" name="uploadFile"><br>
 						<textarea rows="20" cols="70" id="summernote" name="noticeContent">${notice.noticeContent }</textarea>
 						
 					</fieldset>

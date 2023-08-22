@@ -159,8 +159,37 @@ public class NoticeController {
 	@RequestMapping(value="/notice/modify.do", method=RequestMethod.POST)
 	public String updateNotice(
 			@ModelAttribute Notice notice,
+			@RequestParam(value="uploadFile",required=false) MultipartFile uploadFile,
+			HttpServletRequest request,
 			Model model) {
 		try {
+			if(!uploadFile.getOriginalFilename().equals("")) {
+				//파일이름
+				String fileName= uploadFile.getOriginalFilename();
+				//파일경로(내가 저장한 후 그 경로를 DB에 저장하도록 준비하는 것)
+				String root =
+						request.getSession().getServletContext().getRealPath("resources");
+				//폴더가 없을 경우 자동 생성(내가 업로드한 파일을 저장할 폴더)
+				String saveFolder = root+"\\nuploadFiles";
+				File folder = new File(saveFolder);
+				if(!folder.exists()) {
+					folder.mkdir();
+				}
+				//파일경로
+				String savePath=saveFolder+"\\"+fileName;
+				File file = new  File(savePath);
+				//파일저장
+				uploadFile.transferTo(file);
+				//파일크기
+				long fileLength=uploadFile.getSize();
+				notice.setNoticeFilename(fileName);
+				notice.setNoticeFilepath(savePath);
+				notice.setNoticeFilelength(fileLength);
+			} else {
+				notice.setNoticeFilename("");
+				notice.setNoticeFilepath("");
+				//notice.setNoticeFilelength(0);
+			}
 			int result = service.updateNotice(notice);
 			if(result > 0) {
 				model.addAttribute("msg", "공지 수정 완료");
