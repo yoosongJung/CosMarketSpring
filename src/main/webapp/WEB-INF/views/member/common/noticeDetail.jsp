@@ -49,6 +49,8 @@
 	                    <input type="text" style="width: 10%;" value="${notice.noticeWriter }" readonly>
 	                    <label>작성일</label>
 	                    <input type="text" style="width: 100px;" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${notice.noticeDate }"/>" readonly>
+	                	<label>첨부파일</label>
+	                	<a href="../resources/nuploadFiles/${notice.noticeFilename }" download>${notice.noticeFilename }</a>
 	                </div>
 	                    <br>
 						<p>${notice.noticeContent }</p>

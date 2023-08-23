@@ -1,6 +1,8 @@
 package kr.co.cosmarket.notice.controller;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -163,33 +165,25 @@ public class NoticeController {
 			HttpServletRequest request,
 			Model model) {
 		try {
-			if(!uploadFile.getOriginalFilename().equals("")) {
-				//파일이름
-				String fileName= uploadFile.getOriginalFilename();
-				//파일경로(내가 저장한 후 그 경로를 DB에 저장하도록 준비하는 것)
-				String root =
-						request.getSession().getServletContext().getRealPath("resources");
-				//폴더가 없을 경우 자동 생성(내가 업로드한 파일을 저장할 폴더)
-				String saveFolder = root+"\\nuploadFiles";
-				File folder = new File(saveFolder);
-				if(!folder.exists()) {
-					folder.mkdir();
+			if(uploadFile != null && !uploadFile.isEmpty()) {
+				// 기존 업로드된 파일 존재 여부 체크
+				String filename = notice.getNoticeFilename();
+				if(filename != null) {
+					// 있으면 기존 파일 삭제
+					this.deleteFile(request, filename);
 				}
-				//파일경로
-				String savePath=saveFolder+"\\"+fileName;
-				File file = new  File(savePath);
-				//파일저장
-				uploadFile.transferTo(file);
-				//파일크기
-				long fileLength=uploadFile.getSize();
-				notice.setNoticeFilename(fileName);
-				notice.setNoticeFilepath(savePath);
-				notice.setNoticeFilelength(fileLength);
-			} else {
-				notice.setNoticeFilename("");
-				notice.setNoticeFilepath("");
-				//notice.setNoticeFilelength(0);
-			}
+				// 없으면 새로 업로드 하려는 파일 저장
+				Map<String, Object> infoMap = this.saveFile(uploadFile, request);
+				notice.setNoticeFilename((String)infoMap.get("filename"));
+				notice.setNoticeFilepath((String)infoMap.get("filepath"));
+				notice.setNoticeFilelength((long)infoMap.get("filelength"));
+				
+			} 
+//			else {
+//				notice.setNoticeFilename("");
+//				notice.setNoticeFilepath("");
+//				notice.setNoticeFilelength(0);
+//			}
 			int result = service.updateNotice(notice);
 			if(result > 0) {
 				model.addAttribute("msg", "공지 수정 완료");
@@ -219,33 +213,21 @@ public class NoticeController {
 			HttpServletRequest request,
 			Model model) {
 		try {
-			if(!uploadFile.getOriginalFilename().equals("")) {
-				//파일이름
-				String fileName= uploadFile.getOriginalFilename();
-				//파일경로(내가 저장한 후 그 경로를 DB에 저장하도록 준비하는 것)
-				String root =
-						request.getSession().getServletContext().getRealPath("resources");
-				//폴더가 없을 경우 자동 생성(내가 업로드한 파일을 저장할 폴더)
-				String saveFolder = root+"\\nuploadFiles";
-				File folder = new File(saveFolder);
-				if(!folder.exists()) {
-					folder.mkdir();
-				}
-				//파일경로
-				String savePath=saveFolder+"\\"+fileName;
-				File file = new  File(savePath);
-				//파일저장
-				uploadFile.transferTo(file);
-				//파일크기
-				long fileLength=uploadFile.getSize();
+			if(uploadFile != null && !uploadFile.getOriginalFilename().equals("")) {
+				Map<String, Object> nMap = this.saveFile(uploadFile, request);
+				String fileName = (String)nMap.get("fileName");
+				String savePath = (String)nMap.get("filePath");
+				long fileLength = (long)nMap.get("fileLength");
+				
 				notice.setNoticeFilename(fileName);
 				notice.setNoticeFilepath(savePath);
 				notice.setNoticeFilelength(fileLength);
-			} else {
-				notice.setNoticeFilename("");
-				notice.setNoticeFilepath("");
-				//notice.setNoticeFilelength(0);
-			}
+			} 
+//			else {
+//				notice.setNoticeFilename("");
+//				notice.setNoticeFilepath("");
+//				notice.setNoticeFilelength(0);
+//			}
 			int result = service.insertNotice(notice);
 			if(result > 0) {
 				return "redirect:/notice/list.do";
@@ -259,6 +241,54 @@ public class NoticeController {
 			e.printStackTrace();
 			model.addAttribute("msg", e.getMessage());
 			return "commonDisplay/serviceFailed";
+		}
+	}
+	
+	public Map<String, Object> saveFile(MultipartFile uploadFile, HttpServletRequest request) throws Exception {
+		Map<String, Object> infoMap = new HashMap<String, Object>();
+		// 파일 이름
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		String strResult = sdf.format(new Date(System.currentTimeMillis()));
+		String originFilename = uploadFile.getOriginalFilename();
+		String ext = originFilename.substring(originFilename.lastIndexOf(".")+1);
+		String originPurename = uploadFile.getOriginalFilename().replace("." + ext, "");
+		
+		String filename = originPurename + "_" + strResult + "." + ext;
+		// (내가 저장한 후 그 경로를 DB에 저장하도록 준비하는 것)
+		String root = request.getSession().getServletContext().getRealPath("resources");
+		// 폴더가 없을 경우 자동 생성(업로드한 파일을 저장할 폴더)
+		String saveFolder = root + "\\nuploadFiles";
+		File folder = new File(saveFolder);
+		if(!folder.exists()) {
+			folder.mkdir();
+		}
+		// 파일 경로
+//		Random rand = new Random();
+//		String strResult = "N";
+//		for(int i = 0; i < 7; i++) {
+//			int result = rand.nextInt(20)+1;
+//			strResult += result + "";
+//		}
+		
+		String savepath = saveFolder + "\\" + filename;
+		File file = new File(savepath);
+		// 파일 저장
+		uploadFile.transferTo(file);
+		// 파일 크기
+		long filelength = uploadFile.getSize();
+		infoMap.put("filename", filename);
+		infoMap.put("filepath", savepath);
+		infoMap.put("filelength", filelength);
+		
+		return infoMap;
+	}
+	
+	private void deleteFile(HttpServletRequest request, String filename) {
+		String root = request.getSession().getServletContext().getRealPath("resources");
+		String delFilepath = root + "\\nuploadFiles\\" + filename;
+		File file = new File(delFilepath);
+		if(file.exists()) {
+			file.delete();
 		}
 	}
 }

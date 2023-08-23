@@ -48,12 +48,17 @@
 				<hr>
 				<form action="/notice/modify.do" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="noticeNo" value="${notice.noticeNo }">
+				<input type="hidden" name="noticeFilename" value="${notice.noticeFilename }">
+				<input type="hidden" name="noticeFilepath" value="${notice.noticeFilepath }">
+				<input type="hidden" name="noticeFilelength" value="${notice.noticeFilelength }">
 					<fieldset>
 						<!-- <legend>공지사항 수정</legend> -->
 						
 						<label>제목</label>
 						<input type="text" style="width:500px" id="" name="noticeSubject" value="${notice.noticeSubject }">
+						<br>
 						<label>첨부파일</label>
+						<a href="../resources/nuploadFiles/${notice.noticeFilename }" download>${notice.noticeFilename }</a>
 						<input type="file" name="uploadFile"><br>
 						<textarea rows="20" cols="70" id="summernote" name="noticeContent">${notice.noticeContent }</textarea>
 						
