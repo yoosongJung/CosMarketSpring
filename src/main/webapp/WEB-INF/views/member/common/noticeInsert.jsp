@@ -46,13 +46,13 @@
         	<div id="main_middle">
 				<h2><b>공지사항 작성</b></h2>
 				<hr>
-				<form action="/notice/insert.do" method="post" enctype="multipart/form-data">
+				<form action="/notice/insert.do" method="post" enctype="multipart/form-data" onsubmit="return blankValid();">
 					<fieldset>
 						<label>제목</label>
-						<input type="text" style="width:500px" id="" name="noticeSubject" value="${notice.noticeSubject }"><br><br>
+						<input type="text" style="width:500px" id="noticeSubject" name="noticeSubject" value="${notice.noticeSubject }"><br><br>
 						<label>첨부파일</label>
 						<input type="file" name="uploadFile"><br>
-						<textarea rows="20" cols="70" id="summernote" name="noticeContent">${notice.noticeContent }</textarea>
+						<textarea rows="20" cols="70" id="summernote" class="noticeContent" name="noticeContent">${notice.noticeContent }</textarea>
 						
 					</fieldset>
 					<div style="margin: 30px 10px">
@@ -95,6 +95,16 @@
 	                    focus: false                  // set focus to editable area after initializing summernote
 	            });
 	        });
+	        
+	        function blankValid(){
+	        	if(document.querySelector(".noticeContent").value != "" &&
+	                    document.querySelector("#noticeSubject").value != ""){
+	        		return true;
+	        	} else {
+	        		alert("제목과 내용은 빈칸일 수 없습니다");
+	        		return false;
+	        	}
+	        }
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 	</body>

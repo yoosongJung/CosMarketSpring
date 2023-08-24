@@ -1,6 +1,7 @@
 package kr.co.cosmarket.member.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -203,13 +204,14 @@ public class MemberController {
 	
 	@RequestMapping(value="/member/myInfo.do", method=RequestMethod.GET)
 	public String showDetailMember(
-			@RequestParam("memberId") String memberId,
+//			@RequestParam("memberId") String memberId,
+			HttpSession session,
 			@RequestParam("memberType") String memberType,
 			Model model) {
 		if(memberType.isEmpty()) return "memberInfo/login";
 		if(memberType.equals("buyer")) {
 			try {
-				MemberBuyer mOne = service.selectOneBuyerById(memberId);
+				MemberBuyer mOne = service.selectOneBuyerById(session.getAttribute("memberId").toString());
 				if(mOne != null) {
 					model.addAttribute("member", mOne);
 					return "member/common/myPage";
@@ -224,7 +226,7 @@ public class MemberController {
 			}
 		} else {
 			try {
-				MemberSeller mOne = service.selectOneSellerById(memberId);
+				MemberSeller mOne = service.selectOneSellerById(session.getAttribute("memberId").toString());
 				if(mOne != null) {
 					model.addAttribute("member", mOne);
 					return "member/common/myPage";

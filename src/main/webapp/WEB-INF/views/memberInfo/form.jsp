@@ -206,12 +206,15 @@
                         data : data,
                         dataType : 'text',
                         success : function (data) {
-                            if(data == "false"){
-                            	document.querySelector(".buyerCheckId").innerText = "사용 가능";
-                            } else {
-                            	document.querySelector(".buyerCheckId").innerText = "중복된 아이디입니다";
-                            }
-                            
+	                            const regExp = /^[a-zA-Z0-9]{3,15}$/;
+	                            const inputId = document.querySelector("#buyer_id").value;
+	                            if(data == "false" && regExp.test(inputId)){
+	                            	document.querySelector(".buyerCheckId").innerText = "사용 가능";
+	                            } else if(data == "true"){
+	                            	document.querySelector(".buyerCheckId").innerText = "중복된 아이디입니다";
+	                            } else if(!regExp.test(inputId)){
+	                            	document.querySelector(".buyerCheckId").innerText = "3~15자리 영문 또는 숫자만 가능합니다";
+	                            }
                             }
                         });
                 }
@@ -228,11 +231,15 @@
                         data : data,
                         dataType : 'text',
                         success : function (data) {
-                            if(data == "false"){
-                            	document.querySelector(".sellerCheckId").innerText = "사용 가능";
-                            } else {
-                            	document.querySelector(".sellerCheckId").innerText = "중복된 아이디입니다";
-                            }
+	                        	const regExp = /^[a-zA-Z0-9]{3,15}$/;
+	                            const inputId = document.querySelector("#seller_id").value;
+	                            if(data == "false" && regExp.test(inputId)){
+	                            	document.querySelector(".sellerCheckId").innerText = "사용 가능";
+	                            } else if(data == "true"){
+	                            	document.querySelector(".sellerCheckId").innerText = "중복된 아이디입니다";
+	                            } else if(!regExp.test(inputId)){
+	                            	document.querySelector(".sellerCheckId").innerText = "3~15자리 영문 또는 숫자만 가능합니다";
+	                            }
                             
                             }
                         });
@@ -258,13 +265,23 @@
             }
 
             function buyerCheckAdditional() {
-                if(document.querySelector(".buyerCheckPw").innerText == "일치" &&
+            	const regExp = /^[0-9]{10,11}$/;
+            	const inputPhone = document.querySelector("#buyer_phone").value;
+            	if(!regExp.test(inputPhone)){
+                	alert("휴대폰번호는 10 또는 11 자리 숫자입니다");
+                	return false;
+                } else if(document.querySelector(".buyerCheckPw").innerText == "일치" &&
                 document.querySelector(".buyerCheckId").innerText == "사용 가능") {
                     return true;
                 } else return false;
             }
             function sellerCheckAdditional() {
-                if(document.querySelector(".sellerNo").innerText == "등록가능한 사업자입니다" &&
+            	const regExp = /^[0-9]{10,11}$/;
+            	const inputPhone = document.querySelector("#seller_phone").value;
+            	if(!regExp.test(inputPhone)){
+                	alert("휴대폰번호는 10 또는 11 자리 숫자입니다");
+                	return false;
+                } else if(document.querySelector(".sellerNo").innerText == "등록가능한 사업자입니다" &&
                 document.querySelector(".sellerCheckId").innerText == "사용 가능" &&
                 document.querySelector(".sellerCheckPw").innerText == "일치" &&
                 document.querySelector("select").value != "") {
@@ -304,7 +321,7 @@
                 if(inputTag[1].value != "" && document.querySelector(".buyerCheckId").innerText != "사용 가능") {
                     document.querySelector(".buyerCheckId").innerText = "중복체크하세요";
                 }
-
+                
                 if(inputTag[2].value != "") {
                     if(inputTag[3].value != inputTag[2].value) {
                         document.querySelector(".buyerCheckPw").innerText = "불일치";

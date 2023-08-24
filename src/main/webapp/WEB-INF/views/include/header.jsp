@@ -17,7 +17,7 @@
 						<c:if test="${memberType eq null }">
                         <li class="nav-item" style="margin-top: 13px;"><a href="/memberInfo/register.do">회원가입</a></li>
                         <li class="nav-item" style="margin-top: 13px;"><a href="/memberInfo/login.do">로그인</a></li>
-                        <li class="nav-item" style="margin-top: 13px;"><a href="/member/myInfo.do?memberId=${memberId}&memberType=${memberType}">마이페이지</a></li>
+                        <li class="nav-item" style="margin-top: 13px;"><a href="/member/myInfo.do?memberType=${memberType}">마이페이지</a></li>
                         <li class="nav-item" style="margin-top: 13px;"><a href="./member/common/premium.html">프리미엄</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -49,7 +49,7 @@
                         <c:if test="${memberType eq 'buyer' and memberId ne 'admin' }">
                         <li class="nav-item" style="margin-top: 13px;"><a href="#">${memberName }님</a></li>
                         <li class="nav-item" style="margin-top: 13px;"><a href="/memberInfo/logout.do">로그아웃</a></li>
-                        <li class="nav-item" style="margin-top: 13px;"><a href="/member/myInfo.do?memberId=${memberId}&memberType=${memberType}">마이페이지</a></li>
+                        <li class="nav-item" style="margin-top: 13px;"><a href="/member/myInfo.do?memberType=${memberType}">마이페이지</a></li>
                         <li class="nav-item" style="margin-top: 13px;"><a href="./member/common/premium.html">프리미엄</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -66,7 +66,7 @@
                         <c:if test="${memberType eq 'seller' }">
                         <li class="nav-item" style="margin-top: 13px;"><a href="#">${memberName }님</a></li>
                         <li class="nav-item" style="margin-top: 13px;"><a href="/memberInfo/logout.do">로그아웃</a></li>
-                        <li class="nav-item" style="margin-top: 13px;"><a href="/member/myInfo.do?memberId=${memberId}&memberType=${memberType}">마이페이지</a></li>
+                        <li class="nav-item" style="margin-top: 13px;"><a href="/member/myInfo.do?&memberType=${memberType}">마이페이지</a></li>
                         <li class="nav-item" style="margin-top: 13px;"><a href="./member/common/premium.html">프리미엄</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

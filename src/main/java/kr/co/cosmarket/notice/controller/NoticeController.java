@@ -120,8 +120,13 @@ public class NoticeController {
 	@RequestMapping(value="/notice/delete.do", method=RequestMethod.GET)
 	public String deleteNotice(
 			@RequestParam("noticeNo") int noticeNo,
+			@RequestParam("noticeFilename") String noticeFilename,
+			HttpServletRequest request,
 			Model model) {
 		try {
+			if(noticeFilename != "") {
+				deleteFile(request, noticeFilename);
+			}
 			int result = service.deleteNoticeByNo(noticeNo);
 			if(result > 0) {
 				return "redirect:/notice/list.do";
@@ -223,11 +228,10 @@ public class NoticeController {
 				notice.setNoticeFilepath(savePath);
 				notice.setNoticeFilelength(fileLength);
 			} 
-//			else {
-//				notice.setNoticeFilename("");
-//				notice.setNoticeFilepath("");
-//				notice.setNoticeFilelength(0);
-//			}
+			else {
+				notice.setNoticeFilename("");
+				notice.setNoticeFilepath("");
+			}
 			int result = service.insertNotice(notice);
 			if(result > 0) {
 				return "redirect:/notice/list.do";

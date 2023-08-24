@@ -91,7 +91,7 @@
 		const deleteCheck = () => {
 			/* const noticeNo = '${notice.noticeNo}'; */
 			if(confirm("삭제 하시겠습니까?")){
-				location.href = "/notice/delete.do?noticeNo=${notice.noticeNo }";
+				location.href = "/notice/delete.do?noticeNo=${notice.noticeNo }&noticeFilename=${notice.noticeFilename}";
 			}
 		}
 	</script>
