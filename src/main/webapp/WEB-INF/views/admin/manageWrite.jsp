@@ -54,7 +54,7 @@
                         <input type="text" id="" placeholder="제목 또는 작성자를 입력해주세요" style="width: 250px;">
                         <button id="findName" onclick="findName();"><i class="fa-solid fa-magnifying-glass" style="color: blue;"></i></button>
                     </span>
-                    <button onclick="javascript:location.href='../member/common/write.html'">공지사항 등록</button>
+                    <button onclick="javascript:location.href='/notice/insert.do'">공지사항 등록</button>
                 </div>
                 <table>
                     <thead>

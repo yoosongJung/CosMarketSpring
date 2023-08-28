@@ -289,9 +289,9 @@
                         <p>Q&A</p>
                         <div>
                             <p>
-                                <a href="./member/common/QndA.html">* 배송 문의 드립니다.</a> <br>
-                                <a href="./member/common/QndA.html">* 주문 후 배송까지 몇일 걸리나요?</a> <br>
-                                <a href="./member/common/QndA.html">* 구매 후 수량 변경 할 수 있나요?</a>
+                                <a href="/QandA/list.do">* 배송 문의 드립니다.</a> <br>
+                                <a href="/QandA/list.do">* 주문 후 배송까지 몇일 걸리나요?</a> <br>
+                                <a href="/QandA/list.do">* 구매 후 수량 변경 할 수 있나요?</a>
                             </p>
                         </div>
                     </div>

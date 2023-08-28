@@ -1,78 +1,77 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../resources/css/1.main.css">
-        <link rel="stylesheet" href="../../resources/css/15.write.css">
-        <link rel="stylesheet" href="../../resources/css/reset.css">
         <script src="https://kit.fontawesome.com/dbb376a4c5.js" crossorigin="anonymous"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <link rel="stylesheet" href="../../resources/css/1.main.css">
+        <link rel="stylesheet" href="../../resources/css/11.freeBoardDetail.css">
+        <link rel="stylesheet" href="../../resources/css/reset.css">
         <script src="../../resources/js/summernote/summernote-lite.js"></script>
         <script src="../../resources/js/summernote/lang/summernote-ko-KR.js"></script>
         <link rel="stylesheet" href="../../resources/js/summernote/summernote-lite.css">
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
         <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
         <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
-        <title>Write</title>
+        <title>FreeBoardDetail</title>
     </head>
     <body>
         <header class="sticky-top navbar navbar-expand-lg" style="padding-top: 0px;">
-            
-            <div class="logo">
-                <a class="navbar-brand" href="../../index.jsp"><img src="../../resources/images/main/logo.PNG" alt=""></a>
-            </div>
-            <div id="nav" class="container-fluid">
-                <div id="nav2">
-                    <input type="text" placeholder="Search">
-                    <button id="navSearch"><i class="fa-solid fa-magnifying-glass" style="color: #f7f7f7;"></i></button>
-                </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item" style="margin-top: 13px;"><a href="/memberInfo/register.do">회원가입</a></li>
-                        <li class="nav-item" style="margin-top: 13px;"><a href="/memberInfo/login.do">로그인</a></li>
-                        <li class="nav-item" style="margin-top: 13px;"><a href="/member/myInfo.do?memberId=${memberId}&memberType=${memberType}">마이페이지</a></li>
-                        <li class="nav-item" style="margin-top: 13px;"><a href="./premium.html">프리미엄</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                게시판
-                            </a>
-                            <ul class="dropdown-menu" style="background-color: skyblue;">
-                                <li><a class="dropdown-item" href="/notice/list.do?currentPage=1">공지사항</a></li>
-                                <li><a class="dropdown-item" href="./QndA.html">Q&A</a></li>
-                                <li><a class="dropdown-item" href="./freeBoard.html">자유게시판</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        
+            <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
         </header>
         <main>
             <div id="main_left">
 
             </div>
             <div id="main_middle">
-                <h2><b>글 쓰기</b></h2>
+                <label class="back"><a href="/freeBoard/list.do"><i class="fa-solid fa-arrow-rotate-left"></i>목록으로</a></label>
+                <h2><b>자유 게시판</b></h2>
                 <hr>
-                <div class="selectType">
-                    <select style="width: 15%;" onchange="passwordByType();">
-                        <option value="freeBoard">자유게시판</option>
-                        <option value="QandA" selected>Q&A</option>
-                    </select>
-                    <label>제목</label><input type="text" style="width: 45%;">
-                    <label>비밀번호</label><input type="text" class="disabledPassword">
+                <div class="titlePassword">
+                    <label>&nbsp;제목 &nbsp;</label>
+                    <input type="text" style="width: 55%;" value="후기) 구찌 뱀부 퍼퓸">
                 </div>
-                <textarea id="summernote" name="editordata"></textarea>
-                <button class="order success" onclick="javascript: location.href='./freeBoard.html'" value="승인/발송처리"><i class="fa-solid fa-check"></i>&nbsp;&nbsp;글 등록</button>
-                <button class="order cancel" onclick="javascript: location.href='./freeBoard.html'" value="주문 취소"><i class="fa-solid fa-arrow-rotate-left"></i>&nbsp;돌아가기</button>
+                <textarea id="summernote" name="editordata">후기 좋아서 사봤는데 <br>
+                    향이 너무 좋네요 <br> 얼른 사세요~</textarea>
+                <hr>
+                <div class="modify">
+                    <label>댓글 2개</label>
+                    <label>
+                        <button onclick="javascript: location.href='/freeBoard/list.do'"><i class="fa-solid fa-pen-to-square"></i>글 수정</button>
+                        <button onclick="javascript: location.href='/freeBoard/list.do'"><i class="fa-solid fa-trash"></i>글 삭제</button>
+                    </label>
+                </div>
+                <hr>
+                <div class="commentArea">
+                    <label class="commenter">KH02</label><label>2023-05-17</label>
+                    <div class="comment" style="background-color: rgb(86, 190, 232);">
+                        <p><label>정확한 상품명이 뭐에요?</label><button class="commentReturn">답글</button></p>
+                    </div>
+                    <label class="commenter">shin</label><label>2023-05-15</label>
+                    <div class="comment" style="background-color: rgb(188, 137, 188);">
+                        <p><label>배송은 얼마나 걸리셨나요</label><button class="commentReturn">답글</button></p>
+                    </div>
+                    <div class="my">
+                        <label class="commenter">jys</label><label>2023-05-15</label>
+                        <div style="display: flex;">
+                            <i class="fa-solid fa-play" style="margin-right: 10px;"></i>
+                            <div class="myComment">
+                                <p><label>주문 후 3일 걸렸어요</label><button class="commentReturn">답글</button></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 5%;">
+                        <input type="text" placeholder="댓글을 입력해주세요." style="width: 70%; margin-bottom: 5%;">
+                        <button class="commentBtn">댓글</button>
+                    </div>
+                </div>
             </div>
             <div id="main_right">
                 <div>
@@ -119,12 +118,6 @@
                     });
                 });
 
-                function passwordByType() {
-                    const typeValue = document.querySelector("select").value;
-                    if(typeValue == "freeBoard") {
-                        document.querySelector(".disabledPassword").disabled = true;
-                    } else document.querySelector(".disabledPassword").disabled = false;
-                }
 
                 document.querySelector("#toTheTop").addEventListener("click", function() {
                 document.documentElement.scrollTop = 0;

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -16,38 +18,7 @@
     </head>
     <body>
         <header class="sticky-top navbar navbar-expand-lg" style="padding-top: 0px;">
-            
-            <div class="logo">
-                <a class="navbar-brand" href="../../index.jsp"><img src="../../resources/images/main/logo.PNG" alt=""></a>
-            </div>
-            <div id="nav" class="container-fluid">
-                <div id="nav2">
-                    <input type="text" placeholder="Search">
-                    <button id="navSearch"><i class="fa-solid fa-magnifying-glass" style="color: #f7f7f7;"></i></button>
-                </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item" style="margin-top: 13px;"><a href="/memberInfo/register.do">회원가입</a></li>
-                        <li class="nav-item" style="margin-top: 13px;"><a href="/memberInfo/login.do">로그인</a></li>
-                        <li class="nav-item" style="margin-top: 13px;"><a href="/member/myInfo.do?memberId=${memberId}&memberType=${memberType}">마이페이지</a></li>
-                        <li class="nav-item" style="margin-top: 13px;"><a href="./premium.html">프리미엄</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                게시판
-                            </a>
-                            <ul class="dropdown-menu" style="background-color: skyblue;">
-                                <li><a class="dropdown-item" href="/notice/list.do?currentPage=1">공지사항</a></li>
-                                <li><a class="dropdown-item" href="./QndA.html">Q&A</a></li>
-                                <li><a class="dropdown-item" href="./freeBoard.html">자유게시판</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        
+            <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
         </header>
         <main>
             <div id="main_left">
@@ -59,7 +30,7 @@
                 <div class="search">
                     <input type="text" placeholder="제목 또는 작성자를 입력해주세요" style="width: 250px">
                     <button id="findProduct" onclick="findWrite();"><i class="fa-solid fa-magnifying-glass" style="color: blue;"></i></button>
-                    <button class="write" onclick="javascript: location.href='./write.html'">글쓰기</button>
+                    <button class="write" onclick="javascript: location.href='/board/insert.do'">글쓰기</button>
                 </div>
                 <table>
                     <thead>
@@ -73,19 +44,19 @@
                     <tbody>
                         <tr>
                             <td>50</td>
-                            <td><button onclick="javascript: location.href='./freeBoardDetail.html'">디올 제품 써보신분?</button></td>
+                            <td><button onclick="javascript: location.href='/freeBoard/detail.do'">디올 제품 써보신분?</button></td>
                             <td>jys</td>
                             <td>2023-05-25</td>
                         </tr>
                         <tr>
                             <td>49</td>
-                            <td><button onclick="javascript: location.href='./freeBoardDetail.html'">후기)랑콤 비 파씰</button></td>
+                            <td><button onclick="javascript: location.href='/freeBoard/detail.do'">후기)랑콤 비 파씰</button></td>
                             <td>KH02</td>
                             <td>2023-05-24</td>
                         </tr>
                         <tr>
                             <td>48</td>
-                            <td><button onclick="javascript: location.href='./freeBoardDetail.html'">어느 제품이 더 맞을까요</button></td>
+                            <td><button onclick="javascript: location.href='/freeBoard/detail.do'">어느 제품이 더 맞을까요</button></td>
                             <td>shin</td>
                             <td>2023-05-24</td>
                         </tr>

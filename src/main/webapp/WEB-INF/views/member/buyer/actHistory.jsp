@@ -59,21 +59,21 @@
                         <td>Q&A</td>
                         <td>배송기한은 몇일인가요?</td>
                         <td>2023-05-18</td>
-                        <td><a href="../common/freeBoardDetail.html"><i class="fa-solid fa-pen-to-square"></i></a>&nbsp;&nbsp;&nbsp;
+                        <td><a href="/freeBoard/detail.do"><i class="fa-solid fa-pen-to-square"></i></a>&nbsp;&nbsp;&nbsp;
                             <button onclick="deleted(this.value);" value="no1"><i class="fa-solid fa-trash"></i></button></td>
                     </tr>
                     <tr id="no2" class="freeBoard">
                         <td>자유게시판</td>
                         <td>건조한 피부에 맞는 로션 추천 좀</td>
                         <td>2023-05-11 </td>
-                        <td><a href="../common/freeBoardDetail.html"><i class="fa-solid fa-pen-to-square"></i></a>&nbsp;&nbsp;&nbsp;
+                        <td><a href="/freeBoard/detail.do"><i class="fa-solid fa-pen-to-square"></i></a>&nbsp;&nbsp;&nbsp;
                             <button onclick="deleted(this.value);" value="no2"><i class="fa-solid fa-trash"></i></button></td>
                     </tr>
                     <tr id="no3" class="freeBoard">
                         <td>자유게시판</td>
                         <td>디올 루즈 후기!</td>
                         <td>2023-04-30</td>
-                        <td><a href="../common/freeBoardDetail.html"><i class="fa-solid fa-pen-to-square"></i></a>&nbsp;&nbsp;&nbsp;
+                        <td><a href="/freeBoard/detail.do"><i class="fa-solid fa-pen-to-square"></i></a>&nbsp;&nbsp;&nbsp;
                             <button onclick="deleted(this.value);" value="no3"><i class="fa-solid fa-trash"></i></button></td>
                     </tr>
                 </table>

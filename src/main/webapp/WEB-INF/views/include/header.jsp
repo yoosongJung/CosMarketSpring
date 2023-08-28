@@ -25,8 +25,8 @@
                             </a>
                             <ul class="dropdown-menu" style="background-color: skyblue;">
                                 <li><a class="dropdown-item" href="/notice/list.do?currentPage=1">공지사항</a></li>
-                                <li><a class="dropdown-item" href="./member/common/QndA.html">Q&A</a></li>
-                                <li><a class="dropdown-item" href="./member/common/freeBoard.html">자유게시판</a></li>
+                                <li><a class="dropdown-item" href="/QandA/list.do">Q&A</a></li>
+                                <li><a class="dropdown-item" href="/freeBoard/list.do">자유게시판</a></li>
                             </ul>
                         </li>
                         <li class="nav-item" style="margin-top: 13px;"><a href="/buyer/shoppingBasket.do">장바구니</a></li>
@@ -41,8 +41,8 @@
                             </a>
                             <ul class="dropdown-menu" style="background-color: skyblue;">
                                 <li><a class="dropdown-item" href="/notice/list.do?currentPage=1">공지사항</a></li>
-                                <li><a class="dropdown-item" href="./member/common/QndA.html">Q&A</a></li>
-                                <li><a class="dropdown-item" href="./member/common/freeBoard.html">자유게시판</a></li>
+                                <li><a class="dropdown-item" href="/QandA/list.do">Q&A</a></li>
+                                <li><a class="dropdown-item" href="/freeBoard/list.do">자유게시판</a></li>
                             </ul>
                         </li>
                         </c:if>
@@ -57,8 +57,8 @@
                             </a>
                             <ul class="dropdown-menu" style="background-color: skyblue;">
                                 <li><a class="dropdown-item" href="/notice/list.do?currentPage=1">공지사항</a></li>
-                                <li><a class="dropdown-item" href="./member/common/QndA.html">Q&A</a></li>
-                                <li><a class="dropdown-item" href="./member/common/freeBoard.html">자유게시판</a></li>
+                                <li><a class="dropdown-item" href="/QandA/list.do">Q&A</a></li>
+                                <li><a class="dropdown-item" href="/freeBoard/list.do">자유게시판</a></li>
                             </ul>
                         </li>
                         <li class="nav-item" style="margin-top: 13px;"><a href="/buyer/shoppingBasket.do">장바구니</a></li>
@@ -74,8 +74,8 @@
                             </a>
                             <ul class="dropdown-menu" style="background-color: skyblue;">
                                 <li><a class="dropdown-item" href="/notice/list.do?currentPage=1">공지사항</a></li>
-                                <li><a class="dropdown-item" href="./member/common/QndA.html">Q&A</a></li>
-                                <li><a class="dropdown-item" href="./member/common/freeBoard.html">자유게시판</a></li>
+                                <li><a class="dropdown-item" href="/QandA/list.do">Q&A</a></li>
+                                <li><a class="dropdown-item" href="/freeBoard/list.do">자유게시판</a></li>
                             </ul>
                         </li>
                         </c:if>
