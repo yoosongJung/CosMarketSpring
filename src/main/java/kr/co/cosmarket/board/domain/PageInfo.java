@@ -1,4 +1,4 @@
-package kr.co.cosmarket.board.damain;
+package kr.co.cosmarket.board.domain;
 
 // 페이징 처리 관련 VO
 public class PageInfo {

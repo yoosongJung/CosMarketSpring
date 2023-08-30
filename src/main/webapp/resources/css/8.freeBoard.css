@@ -37,6 +37,9 @@ margin-left: 10%;
     text-align: center;
     border: 1px solid #ccc;
   }  
+  #main_middle td a{
+  	text-decoration: none;
+  }
   td button {
     border: none;
     background-color: transparent;
@@ -46,4 +49,14 @@ margin-left: 10%;
   }
   i:hover {
     font-size: unset;
+  }
+.insertBoard {
+    float: right;
+   	border-radius: 5px;
+    color: white;
+    background-color: rgb(6, 174, 240);
+    margin-right: 10%;
+    margin-top: 20px;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 1.8rem;
   }

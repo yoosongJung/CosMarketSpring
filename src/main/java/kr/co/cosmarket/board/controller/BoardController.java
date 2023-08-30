@@ -1,17 +1,21 @@
 package kr.co.cosmarket.board.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.co.cosmarket.board.damain.Board;
-import kr.co.cosmarket.board.damain.PageInfo;
+import kr.co.cosmarket.board.domain.Board;
+import kr.co.cosmarket.board.domain.PageInfo;
 import kr.co.cosmarket.board.service.BoardService;
+import kr.co.cosmarket.notice.domain.Notice;
 
 @Controller
 public class BoardController {
@@ -29,22 +33,22 @@ public class BoardController {
 	public ModelAndView showFreeBoardList(
 			@RequestParam(value="page", required=false, defaultValue="1") Integer currentPage,
 			ModelAndView mv) {
-//		try {
-//			Integer totalCount = bService.getListCount();
-//			PageInfo pInfo = this.getPageInfo(currentPage, totalCount);
-//			List<Board> bList = bService.selectBoardList(pInfo);
-//			if(!bList.isEmpty()) {
-//				mv.addObject("bList", bList).addObject("pInfo", pInfo).setViewName("member/common/freeBoard");
-//			} else {
-//				mv.addObject("msg", "자유게시판 조회가 완료되지 않았습니다.");
-//				mv.addObject("url", "/index.jsp");
-//				mv.setViewName("commonDisplay/serviceFailed");
-//			}
-//		} catch (Exception e) {
-//			mv.addObject("msg", "자유게시판 조회가 완료되지 않았습니다.");
-//			mv.addObject("url", "/index.jsp");
-//			mv.setViewName("commonDisplay/serviceFailed");
-//		}
+		try {
+			Integer totalCount = bService.getFreeBoardListCount();
+			PageInfo pInfo = this.getPageInfo(currentPage, totalCount);
+			List<Board> fList = bService.selectFreeBoardList(pInfo);
+			if(!fList.isEmpty()) {
+				mv.addObject("fList", fList).addObject("pInfo", pInfo).setViewName("member/common/freeBoard");
+			} else {
+				mv.addObject("msg", "자유게시판 조회가 완료되지 않았습니다.");
+				mv.addObject("url", "/index.jsp");
+				mv.setViewName("commonDisplay/serviceFailed");
+			}
+		} catch (Exception e) {
+			mv.addObject("msg", "자유게시판 조회가 완료되지 않았습니다.");
+			mv.addObject("url", "/index.jsp");
+			mv.setViewName("commonDisplay/serviceFailed");
+		}
 
 		return mv;
 	}
@@ -71,6 +75,35 @@ public class BoardController {
 		
 		return pInfo;
 	}
+	
+//	@RequestMapping(value="/board/FreeBoardSearch.do", method=RequestMethod.GET)
+//	public ModelAndView searchFreeBoardList(
+//			ModelAndView mv,
+//			@RequestParam("searchCondition") String searchCondition,
+//			@RequestParam("searchKeyword") String searchKeyword,
+//			@RequestParam(value="page", required=false,defaultValue="1") Integer currentPage
+//			) {
+//		Map<String,String> paraMap = new HashMap<String,String>();
+//		paraMap.put("searchCondition",searchCondition);
+//		paraMap.put("searchKeyword",searchKeyword);
+//		int totalCount=bService.getFreeBoardListCount(paraMap);
+//		PageInfo pInfo = this.getPageInfo(totalCount, currentPage);
+//		List<Notice> searchList = bService.searchFreeBoardByKeyword(pInfo,paraMap);
+//		if(!searchList.isEmpty()) {
+//			mv.addObject("searchCondition", searchCondition);
+//			mv.addObject("searchKeyword", searchKeyword);
+//			mv.addObject("pInfo", pInfo);
+//			mv.addObject("sList", searchList);
+//			mv.setViewName("member/common/freeBoardSearch");
+//			return mv;
+//		}
+//		else {
+//			mv.addObject("msg", "검색 조회 실패");
+//			mv.addObject("url", "/freeBoard/list.do");
+//			mv.setViewName("commonDisplay/serviceFailed");
+//			return mv;	
+//		}
+//	}
 	//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 	
 	@RequestMapping(value="/QandA/list.do", method=RequestMethod.GET)

@@ -54,7 +54,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="board" items="${fList }" varStatus="i">
+                        <c:forEach var="board" items="${sList }" varStatus="i">
 							<tr>
 								<td>${board.boardNo }</td>
 								<c:url var="detailUrl" value="/board/detail.kh">
@@ -71,17 +71,21 @@
 					<tfoot>
 						<tr align="center">
 							<td colspan="4">
-							<c:if test="${pInfo.startNavi != 1 }">
-								<a href="/freeBoard/list.do?page=${pInfo.startNavi - 10 }">[이전]</a>&nbsp;
+							<c:if test="${pInfo.currentPage != 1 }">
+								<a href="/board/freeBoardSearch.do?page=${pInfo.currentPage - 1 }&
+								searchCondition=${searchCondition}&searchKeyword=${searchKeyword}">[이전]</a>&nbsp;
 							</c:if>
 							<c:forEach begin="${pInfo.startNavi }" end="${pInfo.endNavi }" var="p">
-								<c:url var="pageUrl" value="/freeBoard/list.do">
+								<c:url var="pageUrl" value="/board/freeBoardSearch.do">
 									<c:param name="page" value="${p }"></c:param>
+									<c:param name="searchCondition" value="${searchCondition }"></c:param>
+									<c:param name="searchKeyword" value="${searchKeyword }"></c:param>
 								</c:url>
 								<a href="${pageUrl }">${p }</a>&nbsp;
 							</c:forEach>
-							<c:if test="${pInfo.endNavi ne pInfo.naviTotalCount }">
-								<a href="/freeBoard/list.do?page=${pInfo.endNavi + 1 }">[다음]</a>
+							<c:if test="${pInfo.currentPage ne pInfo.naviTotalCount }">
+								<a href="/board/freeBoardSearch.do?page=${pInfo.currentPage + 1 }&
+								searchCondition=${searchCondition}&searchKeyword=${searchKeyword}">[다음]</a>
 							</c:if>
 							</td>
 						</tr>
