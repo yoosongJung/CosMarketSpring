@@ -17,6 +17,22 @@
   		<result property="boardType" column="BOARD_TYPE"/>
 	</resultMap>
 	
+	<select id="searchFreeBoardByKeyword" resultMap="boardResultMap">
+		SELECT * FROM BOARD_TBL WHERE B_STATUS = 'Y' AND BOARD_TYPE = 'freeBoard'
+		<if test="searchCondition == 'all'">	
+		AND (BOARD_CONTENT LIKE '%'||#{searchKeyword}||'%' OR  BOARD_WRITER LIKE '%'|| #{searchKeyword}||'%' OR  BOARD_TITLE LIKE '%'||#{searchKeyword}||'%') ORDER BY BOARD_NO DESC
+		</if>
+		<if test="searchCondition=='content'">
+		AND BOARD_CONTENT LIKE '%'||#{searchKeyword}||'%' ORDER BY BOARD_NO DESC
+		</if>
+		<if test="searchCondition=='writer'">
+		AND BOARD_WRITER LIKE '%'|| #{searchKeyword}||'%' ORDER BY BOARD_NO DESC
+		</if>
+		<if test="searchCondition=='title'">
+		AND BOARD_TITLE LIKE '%'||#{searchKeyword}||'%' ORDER BY BOARD_NO DESC
+		</if>
+	</select>
+	
 	<select id="getFreeBoardListCount" resultType="_int">
 		SELECT COUNT(*) FROM BOARD_TBL WHERE BOARD_TYPE = 'freeBoard'
 		<if test="searchCondition == 'all'">	
@@ -29,7 +45,7 @@
 		AND BOARD_WRITER LIKE '%'|| #{searchKeyword}||'%' 
 		</if>
 		<if test="searchCondition=='title'">
-		AND BOARD_SUBJECT LIKE '%'||#{searchKeyword}||'%'
+		AND BOARD_TITLE LIKE '%'||#{searchKeyword}||'%'
 		</if>
 	</select>
 	

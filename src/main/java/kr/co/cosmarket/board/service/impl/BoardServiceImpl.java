@@ -34,4 +34,9 @@ public class BoardServiceImpl implements BoardService{
 		int result = bStore.getFreeBoardListCount(sqlSession, paraMap);
 		return result;
 	}
+	@Override
+	public List<Board> searchFreeBoardByKeyword(PageInfo pInfo, Map<String, String> paraMap) {
+		List<Board> sList = bStore.searchFreeBoardByKeyword(sqlSession, pInfo, paraMap);
+		return sList;
+	}
 }

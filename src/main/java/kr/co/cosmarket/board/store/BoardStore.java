@@ -33,4 +33,13 @@ public interface BoardStore {
 	 */
 	int getFreeBoardListCount(SqlSession sqlSession, Map<String, String> paraMap);
 
+	/**
+	 * 자유게시판 키워드로 검색 Store
+	 * @param sqlSession
+	 * @param pInfo
+	 * @param paraMap
+	 * @return
+	 */
+	List<Board> searchFreeBoardByKeyword(SqlSession sqlSession, PageInfo pInfo, Map<String, String> paraMap);
+
 }

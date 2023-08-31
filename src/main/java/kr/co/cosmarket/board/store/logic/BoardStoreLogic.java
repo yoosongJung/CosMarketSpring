@@ -35,4 +35,13 @@ public class BoardStoreLogic implements BoardStore{
 		return result;
 	}
 
+	@Override
+	public List<Board> searchFreeBoardByKeyword(SqlSession sqlSession, PageInfo pInfo, Map<String, String> paraMap) {
+		int limit = pInfo.getRecordCountPerPage();
+		int offset = (pInfo.getCurrentPage()-1)*limit;
+		RowBounds rowBounds = new RowBounds(offset,limit);
+		List<Board> sList = sqlSession.selectList("BoardMapper.searchFreeBoardByKeyword", paraMap, rowBounds);
+		return sList;
+	}
+
 }
